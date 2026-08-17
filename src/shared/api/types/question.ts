@@ -16,4 +16,5 @@ export interface QuestionDto {
 
 export interface GetPublicQuestionsParams extends PaginationParams {
   collection?: number;
+  titleOrDescriptionSearch: string;
 }

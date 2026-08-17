@@ -1,0 +1,23 @@
+import { baseApi } from '@/shared/api/baseApi';
+import type { GetPublicQuestionsParams, PaginatedResponse, QuestionDto } from '@/shared/api/types';
+
+export const questionApi = baseApi.injectEndpoints({
+  endpoints: (builder) => ({
+    getPublicQuestions: builder.query<PaginatedResponse<QuestionDto>, GetPublicQuestionsParams>({
+      query: (params) => ({
+        url: 'questions/public-questions',
+        params,
+      }),
+      providesTags: (_res, _err, args) => [
+        { type: 'Question', id: `${args.page}${args.collection}` },
+      ],
+    }),
+
+    getQuestionById: builder.query<QuestionDto, number>({
+      query: (id) => `questions/public-questions/${id}`,
+      providesTags: (_result, _error, id) => [{ type: 'Question', id }],
+    }),
+  }),
+});
+
+export const { useGetPublicQuestionsQuery, useGetQuestionByIdQuery } = questionApi;

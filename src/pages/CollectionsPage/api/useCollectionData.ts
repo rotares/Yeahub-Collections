@@ -1,9 +1,9 @@
-import { collectionsQuerySchema, useGetPublicCollectionsQuery } from '@/entities';
-import { type GetPublicCollectionsParams } from '@/shared/api/types';
+import { useGetPublicCollectionsQuery } from '@/entities';
 import { useQueryParams } from '@/shared/lib/query-params/useQueryParams';
+import { useCallback, useMemo } from 'react';
 
 export const useCollectionData = () => {
-  const { params } = useQueryParams<GetPublicCollectionsParams>(collectionsQuerySchema);
+  const { params, setQueryParams } = useQueryParams();
 
   const { data, isLoading } = useGetPublicCollectionsQuery({
     page: params.page,
@@ -12,8 +12,24 @@ export const useCollectionData = () => {
     titleOrDescriptionSearch: params.titleOrDescriptionSearch,
   });
 
+  const total = data?.total ?? 1;
+  const limit = data?.limit || params.limit;
+
+  const totalPages = useMemo(() => {
+    if (!total || !limit) return 0;
+    return Math.ceil(total / limit);
+  }, [total, limit]);
+
+  const handleChangePage = useCallback(
+    (page: number) => setQueryParams({ page }),
+    [setQueryParams],
+  );
+
   return {
     data: data?.data,
     isLoading,
+    totalPages: totalPages,
+    page: params.page,
+    onPageChange: handleChangePage,
   };
 };

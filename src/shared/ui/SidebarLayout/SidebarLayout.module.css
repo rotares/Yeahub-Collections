@@ -1,0 +1,6 @@
+.sidebar {
+  max-width: 390px;
+  width: 100%;
+  position: sticky;
+  flex: 0 0 30%;
+}

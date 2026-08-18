@@ -1,6 +1,5 @@
-import type { GetPublicCollectionsParams } from '@/shared/api/types';
 import { memo } from 'react';
-import { collectionsQuerySchema } from '../../../entities';
+
 import { useSearchFilter } from '../model/useSearchFilter';
 
 interface SearchInputProps {
@@ -9,9 +8,8 @@ interface SearchInputProps {
 
 export const CollectionSearchInput = memo(
   ({ placeholder = 'Введите запрос...' }: SearchInputProps) => {
-    const { value, onChange, onClear } = useSearchFilter<GetPublicCollectionsParams>({
+    const { value, onChange, onClear } = useSearchFilter({
       key: 'titleOrDescriptionSearch',
-      schema: collectionsQuerySchema,
     });
 
     return (

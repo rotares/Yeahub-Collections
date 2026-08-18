@@ -6,7 +6,7 @@ export const useQueryParams = () => {
 
   const page = Number(searchParams.get('page')) || 1;
   const limit = Number(searchParams.get('limit')) || 10;
-  const titleOrDescriptionSearch = searchParams.get('titleOrDescriptionSearch') || '';
+  const titleOrDescriptionSearch = searchParams.get('titleOrDescriptionSearch') || undefined;
 
   const isFree = searchParams.has('isFree') ? searchParams.get('isFree') === 'true' : undefined;
 

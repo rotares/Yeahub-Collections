@@ -1,2 +1,1 @@
-export { SpecializationFilter } from './collections-filter';
-export { AccessFilter } from './collections-filter/ui/AccessFilter';
+export { AccessFilter, CollectionSearchInput, SpecializationFilter } from './collections-filter';

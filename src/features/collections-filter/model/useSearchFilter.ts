@@ -1,17 +1,11 @@
 import { useDebounce } from '@/shared/hooks/useDebounce';
-import { useQueryParams, type QuerySchema } from '@/shared/lib/query-params';
+import { useQueryParams } from '@/shared/lib/query-params';
 import { useCallback, useEffect, useState, type ChangeEvent } from 'react';
+import { type CommonParams } from '@/shared/lib/query-params';
+import { type FilterOptions } from './types';
 
-interface SearchFilterProps<TParams> {
-  key: keyof TParams;
-  schema: QuerySchema<TParams>;
-}
-
-export const useSearchFilter = <TParams extends object>({
-  key,
-  schema,
-}: SearchFilterProps<TParams>) => {
-  const { params, setQueryParams } = useQueryParams<TParams>(schema);
+export const useSearchFilter = ({ key }: FilterOptions<CommonParams>) => {
+  const { params, setQueryParams } = useQueryParams();
 
   const urlValue = (params[key] || '') as string;
   const [value, setValue] = useState<string>(urlValue);
@@ -23,7 +17,7 @@ export const useSearchFilter = <TParams extends object>({
     setQueryParams({
       [key]: debouncedValue.trim(),
       page: 1,
-    } as unknown as Partial<TParams>);
+    });
   }, [debouncedValue, urlValue, setQueryParams, key]);
 
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {

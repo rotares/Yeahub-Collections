@@ -1,6 +1,4 @@
-import { collectionsQuerySchema } from '@/entities/collection';
 import { useGetSpecializationsQuery } from '@/entities/specialization';
-import { type GetPublicCollectionsParams } from '@/shared/api/types';
 import { FilterSelect } from '@/shared/ui/FilterSelect';
 import { memo } from 'react';
 import { useFilterSelect } from '../model';
@@ -8,8 +6,7 @@ import { useFilterSelect } from '../model';
 export const SpecializationFilter = memo(() => {
   const { data: specializations = [], isLoading } = useGetSpecializationsQuery({});
 
-  const { handleToggle, isSelected } = useFilterSelect<GetPublicCollectionsParams, number>({
-    schema: collectionsQuerySchema,
+  const { handleToggle, isSelected } = useFilterSelect({
     key: 'specializations',
     isMultiple: true,
   });

@@ -1,39 +1,50 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { type QuerySchema } from './types';
-import { parseValue, serializeValue } from './utils';
-
-export const useQueryParams = <T extends object>(schema: QuerySchema<T>) => {
+export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const params = Object.keys(schema).reduce((acc, key) => {
-    const paramKey = key as keyof T;
-    const { type, defaultValue } = schema[paramKey];
-    const rawValue = searchParams.get(String(paramKey));
+  const page = Number(searchParams.get('page')) || 1;
+  const limit = Number(searchParams.get('limit')) || 10;
+  const titleOrDescriptionSearch = searchParams.get('titleOrDescriptionSearch') || '';
 
-    acc[paramKey] = parseValue(rawValue, type, defaultValue) as T[keyof T];
-    return acc;
-  }, {} as T);
+  const isFree = searchParams.has('isFree') ? searchParams.get('isFree') === 'true' : undefined;
+
+  const specializations = useMemo(() => {
+    const raw = searchParams.get('specializations');
+    if (!raw) return [];
+    return raw
+      .split(',')
+      .map(Number)
+      .filter((val) => !isNaN(val));
+  }, [searchParams]);
 
   const setQueryParams = useCallback(
-    (newParams: Partial<T>) => {
+    (
+      newParams: Partial<{
+        page: number;
+        limit: number;
+        titleOrDescriptionSearch: string;
+        isFree: boolean;
+        specializations: number[];
+      }>,
+    ) => {
       setSearchParams(
         (prev) => {
           const next = new URLSearchParams(prev);
 
           Object.entries(newParams).forEach(([key, value]) => {
-            const paramKey = key as keyof T;
-            const schemaConfig = schema[paramKey];
-
-            if (!schemaConfig) return;
-
-            const serialized = serializeValue(value, schemaConfig.type);
-
-            if (serialized === null) {
+            if (
+              value === undefined ||
+              value === null ||
+              value === '' ||
+              (Array.isArray(value) && value.length === 0)
+            ) {
               next.delete(key);
+            } else if (Array.isArray(value)) {
+              next.set(key, value.join(','));
             } else {
-              next.set(key, serialized);
+              next.set(key, String(value));
             }
           });
 
@@ -42,11 +53,17 @@ export const useQueryParams = <T extends object>(schema: QuerySchema<T>) => {
         { replace: true },
       );
     },
-    [schema, setSearchParams],
+    [setSearchParams],
   );
 
   return {
-    params,
+    params: {
+      page,
+      limit,
+      titleOrDescriptionSearch,
+      isFree,
+      specializations,
+    },
     setQueryParams,
   };
 };

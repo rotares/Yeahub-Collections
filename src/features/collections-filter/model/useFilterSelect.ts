@@ -1,58 +1,49 @@
-import { type QuerySchema } from '@/shared/lib/query-params';
-import { useQueryParams } from '@/shared/lib/query-params/useQueryParams';
+import { useQueryParams } from '@/shared/lib/query-params';
 import { useCallback, useMemo } from 'react';
+import { type CommonParams } from '@/shared/lib/query-params';
+import { type FilterOptions } from './types';
 
-type FilterSelectOptions<TParams> = {
-  schema: QuerySchema<TParams>;
-  key: keyof TParams;
-  isMultiple?: boolean;
-};
-
-export const useFilterSelect = <TParams extends object, K = unknown>({
-  schema,
-  key,
-  isMultiple = false,
-}: FilterSelectOptions<TParams>) => {
-  const { params, setQueryParams } = useQueryParams<TParams>(schema);
+export const useFilterSelect = ({ key, isMultiple = false }: FilterOptions<CommonParams>) => {
+  const { params, setQueryParams } = useQueryParams();
 
   const rawValue = params[key];
 
-  const currentValue = useMemo<K[] | K | undefined>(() => {
+  const currentValue = useMemo(() => {
     if (isMultiple) {
       return Array.isArray(rawValue)
-        ? (rawValue.map(Number) as K[])
+        ? rawValue.map(Number)
         : rawValue !== undefined && rawValue !== null
-          ? ([Number(rawValue)] as K[])
+          ? [Number(rawValue)]
           : [];
     }
-    return (rawValue as K) ?? undefined;
+    return rawValue ?? undefined;
   }, [rawValue, isMultiple]);
 
   const handleToggle = useCallback(
-    (value: K) => {
+    (value: CommonParams[typeof key]) => {
       if (isMultiple) {
         const currentArray = Array.isArray(currentValue) ? currentValue : [];
-        const exists = currentArray.includes(value);
+        const exists = currentArray.includes(value as number);
         const updated = exists ? currentArray.filter((v) => v !== value) : [...currentArray, value];
         setQueryParams({
           [key]: updated,
           page: 1,
-        } as unknown as Partial<TParams>);
+        });
       } else {
         const updated = currentValue === value ? undefined : value;
         setQueryParams({
           [key]: updated,
           page: 1,
-        } as unknown as Partial<TParams>);
+        });
       }
     },
     [isMultiple, currentValue, key, setQueryParams],
   );
 
   const isSelected = useCallback(
-    (value: K): boolean => {
+    (value: CommonParams[typeof key]): boolean => {
       if (isMultiple) {
-        return Array.isArray(currentValue) ? currentValue.includes(value) : false;
+        return Array.isArray(currentValue) ? currentValue.includes(value as number) : false;
       }
       return currentValue === value;
     },

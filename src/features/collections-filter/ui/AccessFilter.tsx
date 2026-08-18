@@ -12,9 +12,10 @@ const ACCESS_FILTERS = [
 import { collectionsQuerySchema } from '@/entities';
 import { type GetPublicCollectionsParams } from '@/shared/api/types';
 import { FilterSelect } from '@/shared/ui/FilterSelect';
+import { memo } from 'react';
 import { useFilterSelect } from '../model';
 
-export const AccessFilter = () => {
+export const AccessFilter = memo(() => {
   const { handleToggle, isSelected } = useFilterSelect<GetPublicCollectionsParams, boolean>({
     schema: collectionsQuerySchema,
     key: 'isFree',
@@ -28,4 +29,4 @@ export const AccessFilter = () => {
       title="Тип"
     />
   );
-};
+});

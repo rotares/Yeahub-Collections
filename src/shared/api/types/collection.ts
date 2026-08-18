@@ -1,5 +1,5 @@
-import { type SpecializationDto } from './specialization';
 import { type CreatedBy, type PaginationParams } from './common';
+import { type SpecializationDto } from './specialization';
 
 export interface CompanyDto {
   id: string;

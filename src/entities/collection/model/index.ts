@@ -1,0 +1,1 @@
+export { collectionsQuerySchema } from './querySchema';

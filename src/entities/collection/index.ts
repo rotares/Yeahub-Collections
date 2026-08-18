@@ -1,1 +1,2 @@
-export { useGetPublicCollectionsQuery, useGetCollectionByIdQuery } from './api/collectionApi';
+export { useGetCollectionByIdQuery, useGetPublicCollectionsQuery } from './api/collectionApi';
+export { collectionsQuerySchema } from './model';

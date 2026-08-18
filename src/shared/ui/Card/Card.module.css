@@ -1,0 +1,13 @@
+.card {
+  background-color: var(--background-white);
+  padding: var(--padding-basic);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.cardHeader {
+  margin-bottom: 15px;
+}

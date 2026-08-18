@@ -4,3 +4,9 @@
   position: sticky;
   flex: 0 0 30%;
 }
+
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}

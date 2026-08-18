@@ -1,4 +1,4 @@
-import { CollectionsPage } from '@/pages';
+import { CollectionsPage, CollectionDetails } from '@/pages';
 import { ROUTE_CONFIG } from '@/shared/config';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Layout } from '../layout';
@@ -18,6 +18,10 @@ export const router = createBrowserRouter([
           {
             index: true,
             element: <CollectionsPage />,
+          },
+          {
+            path: ':id',
+            element: <CollectionDetails />,
           },
         ],
       },

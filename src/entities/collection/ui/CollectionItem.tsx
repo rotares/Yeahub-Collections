@@ -1,5 +1,6 @@
 import { type CollectionDto } from '@/shared/api/types/';
 import { memo } from 'react';
+import { Card } from '@/shared/ui/Card';
 
 interface CollectionItemProps {
   item: CollectionDto;
@@ -9,9 +10,11 @@ interface CollectionItemProps {
 //todo
 export const CollectionItem = memo(({ item, onClick }: CollectionItemProps) => {
   return (
-    <article onClick={() => onClick?.(item.id)}>
-      {item.title}
-      {item.description}
-    </article>
+    <Card>
+      <article onClick={() => onClick?.(item.id)}>
+        {item.title}
+        {item.description}
+      </article>
+    </Card>
   );
 });

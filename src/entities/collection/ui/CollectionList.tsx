@@ -1,13 +1,19 @@
 import { type CollectionDto } from '@/shared/api/types/';
 import { useCallback } from 'react';
 import { CollectionItem } from './CollectionItem';
+import { useNavigate } from 'react-router-dom';
 interface CollectionListProps {
   items: CollectionDto[];
 }
 export const CollectionList = ({ items }: CollectionListProps) => {
-  const handleClick = useCallback((id: number) => {
-    console.log(id);
-  }, []);
+  const navigate = useNavigate();
+
+  const handleClick = useCallback(
+    (id: number) => {
+      navigate(`/collections/${id}`);
+    },
+    [navigate],
+  );
 
   return (
     <div>

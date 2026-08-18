@@ -9,5 +9,11 @@ export const CollectionList = ({ items }: CollectionListProps) => {
     console.log(id);
   }, []);
 
-  return items.map((item) => <CollectionItem item={item} key={item.id} onClick={handleClick} />);
+  return (
+    <div>
+      {items.map((item) => (
+        <CollectionItem item={item} key={item.id} onClick={handleClick} />
+      ))}
+    </div>
+  );
 };

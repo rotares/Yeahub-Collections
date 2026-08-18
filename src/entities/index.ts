@@ -1,4 +1,5 @@
 export {
+  CollectionList,
   collectionsQuerySchema,
   useGetCollectionByIdQuery,
   useGetPublicCollectionsQuery,

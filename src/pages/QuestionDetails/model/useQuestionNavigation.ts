@@ -1,6 +1,6 @@
 import { useGetPublicQuestionsQuery, usePrefetchQuestions } from '@/entities';
-import { useGetNavigationHandlers } from './useGetNavigationHandlers';
 import { useEffect } from 'react';
+import { useGetNavigationHandlers } from './useGetNavigationHandlers';
 
 export const useQuestionNavigation = ({
   collectionId,
@@ -11,16 +11,22 @@ export const useQuestionNavigation = ({
   currentQuestionId: number;
   currentPage: number;
 }) => {
-  const { data } = useGetPublicQuestionsQuery({
-    page: currentPage,
-    collection: collectionId,
-  });
+  const { questions, totalPages } = useGetPublicQuestionsQuery(
+    {
+      page: currentPage,
+      collection: collectionId,
+    },
+    {
+      selectFromResult: ({ data }) => ({
+        questions: data?.data ?? [],
+        totalPages: data ? Math.ceil(data.total / data.limit) : 1,
+      }),
+    },
+  );
 
   const prefetchQuestions = usePrefetchQuestions('getPublicQuestions');
 
-  const questions = data?.data ?? [];
   const currentIndex = questions.findIndex((q) => q.id === currentQuestionId);
-  const totalPages = data?.total && data?.limit ? Math.ceil(data.total / data.limit) : 1;
 
   const { handleNext, handlePrev } = useGetNavigationHandlers({
     currentIndex,

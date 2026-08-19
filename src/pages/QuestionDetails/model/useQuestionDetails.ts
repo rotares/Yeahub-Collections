@@ -1,5 +1,5 @@
 import { useGetPublicQuestionsQuery, useGetQuestionByIdQuery } from '@/entities';
-import { isValidIdCheck } from './../../CollectionDetails/utils/isValidIdCheck';
+import { isValidIdCheck } from '@/shared/lib/utils';
 
 export const useQuestionDetails = (page: number, questionId?: string, collectionId?: string) => {
   const { id: qId, isValid: isValidQuestionId } = isValidIdCheck(questionId);

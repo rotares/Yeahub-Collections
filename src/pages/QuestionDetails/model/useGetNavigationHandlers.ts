@@ -1,8 +1,8 @@
+import { useAppStore } from '@/app/store';
+import { selectCachedQuestions } from '@/entities';
 import type { QuestionDto } from '@/shared/api/types';
-import { useAppStore } from '@/shared/hooks/storeHooks';
-import { useNavigate } from 'react-router-dom';
-import { selectCachedPageData } from '@/entities';
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type NavigationHandlerProps = {
   currentIndex: number;
@@ -29,9 +29,8 @@ export const useGetNavigationHandlers = ({
     } else if (currentPage < totalPages) {
       const nextPage = currentPage + 1;
 
-      const selectPageData = selectCachedPageData(collectionId, nextPage);
-      const cachedData = selectPageData(store.getState()).data?.data ?? [];
-      const questionId = cachedData[0]?.id;
+      const cachedQuestions = selectCachedQuestions(collectionId, nextPage)(store.getState());
+      const questionId = cachedQuestions[0]?.id;
 
       if (!questionId) {
         return;
@@ -39,7 +38,7 @@ export const useGetNavigationHandlers = ({
 
       navigate(`/collections/${collectionId}/${questionId}?page=${nextPage}`);
     }
-  }, [collectionId, currentIndex, currentPage, questions, totalPages]);
+  }, [collectionId, currentIndex, currentPage, questions, store, navigate, totalPages]);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -48,9 +47,8 @@ export const useGetNavigationHandlers = ({
     } else if (currentPage > 1) {
       const prevPage = currentPage - 1;
 
-      const selectPageData = selectCachedPageData(collectionId, prevPage);
-      const cachedData = selectPageData(store.getState()).data?.data ?? [];
-      const questionId = cachedData[cachedData.length - 1]?.id;
+      const cachedQuestions = selectCachedQuestions(collectionId, prevPage)(store.getState());
+      const questionId = cachedQuestions[cachedQuestions.length - 1]?.id;
 
       if (!questionId) {
         return;
@@ -58,7 +56,7 @@ export const useGetNavigationHandlers = ({
 
       navigate(`/collections/${collectionId}/${questionId}?page=${prevPage}`);
     }
-  }, [collectionId, currentIndex, currentPage, questions, totalPages]);
+  }, [collectionId, currentIndex, currentPage, questions, navigate, store]);
 
   return {
     handleNext,

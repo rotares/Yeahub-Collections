@@ -1,5 +1,5 @@
 import { useGetPublicCollectionsQuery } from '@/entities';
-import { useQueryParams } from '@/shared/lib/query-params/useQueryParams';
+import { useQueryParams } from '@/shared/lib/hooks';
 import { useCallback, useMemo } from 'react';
 
 export const useCollectionData = () => {

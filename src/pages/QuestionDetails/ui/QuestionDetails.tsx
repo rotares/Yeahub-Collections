@@ -1,5 +1,5 @@
+import { useQueryParams } from '@/shared/lib/hooks';
 import { Navigate, useParams } from 'react-router-dom';
-import { useQueryParams } from '../../../shared/lib/query-params';
 import { useQuestionDetails } from '../model';
 import { useQuestionNavigation } from '../model/useQuestionNavigation';
 

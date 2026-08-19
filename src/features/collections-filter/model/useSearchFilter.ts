@@ -1,7 +1,6 @@
-import { useDebounce } from '@/shared/hooks/useDebounce';
-import { useQueryParams } from '@/shared/lib/query-params';
+import { useQueryParams, type CommonParams } from '@/shared/lib/hooks';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useCallback, useEffect, useState, type ChangeEvent } from 'react';
-import { type CommonParams } from '@/shared/lib/query-params';
 import { type FilterOptions } from './types';
 
 export const useSearchFilter = ({ key }: FilterOptions<CommonParams>) => {

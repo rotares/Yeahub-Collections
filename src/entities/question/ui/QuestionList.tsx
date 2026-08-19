@@ -1,7 +1,7 @@
 import type { QuestionDto } from '@/shared/api/types';
+import { useQueryParams } from '@/shared/lib/hooks';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQueryParams } from '../../../shared/lib/query-params';
 import { QuestionItem } from './QuestionItem';
 
 type QuestionListProps = {

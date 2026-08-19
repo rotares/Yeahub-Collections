@@ -1,5 +1,5 @@
 import { useGetCollectionByIdQuery } from '@/entities';
-import { isValidIdCheck } from '../utils';
+import { isValidIdCheck } from '@/shared/lib/utils';
 
 export const useCollectionDetails = (collectionId: string | undefined) => {
   const { isValid, id } = isValidIdCheck(collectionId);

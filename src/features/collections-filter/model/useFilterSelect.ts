@@ -1,6 +1,5 @@
-import { useQueryParams } from '@/shared/lib/query-params';
+import { useQueryParams, type CommonParams } from '@/shared/lib/hooks';
 import { useCallback, useMemo } from 'react';
-import { type CommonParams } from '@/shared/lib/query-params';
 import { type FilterOptions } from './types';
 
 export const useFilterSelect = ({ key, isMultiple = false }: FilterOptions<CommonParams>) => {

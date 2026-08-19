@@ -6,9 +6,9 @@ export {
 } from './collection';
 export {
   QuestionList,
+  selectCachedQuestions,
   useGetPublicQuestionsQuery,
   useGetQuestionByIdQuery,
   usePrefetch as usePrefetchQuestions,
-  selectCachedPageData,
 } from './question';
 export { useGetSpecializationsQuery } from './specialization';

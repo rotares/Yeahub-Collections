@@ -1,1 +1,1 @@
-export { selectCachedPageData } from './selectCachedPageData';
+export { selectCachedQuestions } from './selectCachedQuestions';

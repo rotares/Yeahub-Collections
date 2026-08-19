@@ -1,5 +1,5 @@
 import { type GetPublicCollectionsParams } from '@/shared/api/types';
-import { type QuerySchema } from '@/shared/lib/query-params/types';
+import { type QuerySchema } from '@/shared/lib/hooks/query-params-types';
 
 export const collectionsQuerySchema: QuerySchema<GetPublicCollectionsParams> = {
   page: { type: 'number', defaultValue: 1 },

@@ -1,10 +1,10 @@
 import { CollectionList } from '@/entities';
 import { AccessFilter, CollectionSearchInput, SpecializationFilter } from '@/features';
-import { useCollectionData } from '../api';
-import { Pagination } from '@/shared/ui/Pagintation';
-import styles from './CollectionsPage.module.css';
 import { Card } from '@/shared/ui/Card';
+import { Pagination } from '@/shared/ui/Pagintation';
 import { SidebarLayout } from '@/shared/ui/SidebarLayout';
+import { useCollectionData } from '../api';
+import styles from './CollectionsPage.module.css';
 
 export const CollectionsPage = () => {
   const { data, isLoading, onPageChange, page, totalPages } = useCollectionData();

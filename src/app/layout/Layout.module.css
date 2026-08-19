@@ -3,4 +3,5 @@
   margin-inline: auto;
   padding: var(--padding-basic);
   min-height: 100dvh;
+  position: relative;
 }

@@ -1,16 +1,17 @@
+import { QuestionList } from '@/entities';
+import { Pagination } from '@/shared/ui/Pagintation';
 import { Navigate, useParams } from 'react-router-dom';
 import { useCollectionDetails, useCollectionQuestions } from '../api';
-import { Pagination } from '@/shared/ui/Pagintation';
 
 export const CollectionDetails = () => {
-  const { id } = useParams();
+  const { collectionId } = useParams();
 
   //get data
-  const { collectionData, isLoadingCollection } = useCollectionDetails(id);
+  const { collectionData, isLoadingCollection } = useCollectionDetails(collectionId);
   const { handleChangePage, isLoadingQuestions, questionsData, totalPages, currentPage } =
-    useCollectionQuestions(id);
+    useCollectionQuestions(collectionId);
 
-  if (!id) {
+  if (!collectionId) {
     return <Navigate to="/collections" replace={true} />;
   }
 
@@ -21,13 +22,7 @@ export const CollectionDetails = () => {
   return (
     <div>
       {collectionData.description}
-      {questionsData && (
-        <>
-          {questionsData.map((q) => {
-            return <p>{q.description}</p>;
-          })}
-        </>
-      )}
+      {questionsData && <QuestionList items={questionsData} />}
       <Pagination
         currentPage={currentPage}
         onPageChange={handleChangePage}

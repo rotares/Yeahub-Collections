@@ -1,7 +1,7 @@
-import { useQueryParams } from '@/shared/lib/query-params';
-import { isValidIdCheck } from '../utils';
 import { useGetPublicQuestionsQuery } from '@/entities';
-import { useMemo, useCallback } from 'react';
+import { useQueryParams } from '@/shared/lib/query-params';
+import { useCallback, useMemo } from 'react';
+import { isValidIdCheck } from '../utils';
 
 export const useCollectionQuestions = (collectionId: string | undefined) => {
   const { params, setQueryParams } = useQueryParams();
@@ -12,7 +12,7 @@ export const useCollectionQuestions = (collectionId: string | undefined) => {
     {
       page: params.page,
       collection: id,
-      limit: params.limit,
+      limit: 1,
     },
     {
       skip: !isValid,
@@ -20,7 +20,9 @@ export const useCollectionQuestions = (collectionId: string | undefined) => {
   );
 
   const total = data?.total ?? 1;
-  const limit = data?.limit || params.limit;
+
+  //hardcoded
+  const limit = 1;
 
   const totalPages = useMemo(() => {
     if (!total || !limit) return 0;

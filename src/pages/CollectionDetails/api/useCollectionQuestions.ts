@@ -12,7 +12,6 @@ export const useCollectionQuestions = (collectionId: string | undefined) => {
     {
       page: params.page,
       collection: id,
-      limit: 1,
     },
     {
       skip: !isValid,
@@ -22,7 +21,7 @@ export const useCollectionQuestions = (collectionId: string | undefined) => {
   const total = data?.total ?? 1;
 
   //hardcoded
-  const limit = 1;
+  const limit = params.limit ?? data?.limit ?? 10;
 
   const totalPages = useMemo(() => {
     if (!total || !limit) return 0;

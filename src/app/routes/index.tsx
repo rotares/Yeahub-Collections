@@ -1,4 +1,4 @@
-import { CollectionsPage, CollectionDetails } from '@/pages';
+import { CollectionDetails, CollectionsPage, QuestionDetails } from '@/pages';
 import { ROUTE_CONFIG } from '@/shared/config';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Layout } from '../layout';
@@ -20,8 +20,12 @@ export const router = createBrowserRouter([
             element: <CollectionsPage />,
           },
           {
-            path: ':id',
+            path: ':collectionId',
             element: <CollectionDetails />,
+          },
+          {
+            path: ':collectionId/:questionId',
+            element: <QuestionDetails />,
           },
         ],
       },

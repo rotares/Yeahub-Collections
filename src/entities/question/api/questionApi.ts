@@ -9,7 +9,7 @@ export const questionApi = baseApi.injectEndpoints({
         params,
       }),
       providesTags: (_res, _err, args) => [
-        { type: 'Question', id: `${args.page}${args.collection}` },
+        { type: 'Question', id: `COLLECTION_${args.collection}_PAGE_${args.page}` },
       ],
     }),
 

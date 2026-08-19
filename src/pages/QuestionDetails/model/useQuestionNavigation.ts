@@ -1,5 +1,6 @@
 import { useGetPublicQuestionsQuery, usePrefetchQuestions } from '@/entities';
-import { useNavigate } from 'react-router-dom';
+import { useGetNavigationHandlers } from './useGetNavigationHandlers';
+import { useEffect } from 'react';
 
 export const useQuestionNavigation = ({
   collectionId,
@@ -10,42 +11,36 @@ export const useQuestionNavigation = ({
   currentQuestionId: number;
   currentPage: number;
 }) => {
-  const navigate = useNavigate();
-
   const { data } = useGetPublicQuestionsQuery({
     page: currentPage,
     collection: collectionId,
   });
 
-  const prefetchNextPage = usePrefetchQuestions('getPublicQuestions');
+  const prefetchQuestions = usePrefetchQuestions('getPublicQuestions');
 
   const questions = data?.data ?? [];
   const currentIndex = questions.findIndex((q) => q.id === currentQuestionId);
-  const totalPages = data?.total ?? 1;
+  const totalPages = data?.total && data?.limit ? Math.ceil(data.total / data.limit) : 1;
 
-  if (currentIndex === questions.length - 1 && currentPage < totalPages) {
-    prefetchNextPage({ page: currentPage + 1, collection: collectionId });
-  }
+  const { handleNext, handlePrev } = useGetNavigationHandlers({
+    currentIndex,
+    questions,
+    currentPage,
+    collectionId,
+    totalPages,
+  });
 
-  const handleNext = () => {
-    if (currentIndex < questions.length - 1) {
-      const nextQuestion = questions[currentIndex + 1];
-      navigate(`/collections/${collectionId}/${nextQuestion.id}?page=${currentPage}`);
-    } else if (currentPage < totalPages) {
-      const nextPage = currentPage + 1;
-      navigate(`/collections/${collectionId}/questions/next?page=${nextPage}`);
+  useEffect(() => {
+    if (questions.length === 0) return;
+
+    if (currentIndex === questions.length - 1 && currentPage < totalPages) {
+      prefetchQuestions({ page: currentPage + 1, collection: collectionId });
     }
-  };
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      const prevQuestion = questions[currentIndex - 1];
-      navigate(`/collections/${collectionId}/${prevQuestion.id}?page=${currentPage}`);
-    } else if (currentPage > 1) {
-      const prevPage = currentPage - 1;
-      navigate(`/collections/${collectionId}/questions/prev?page=${prevPage}`);
+    if (currentIndex === 0 && currentPage > 1) {
+      prefetchQuestions({ page: currentPage - 1, collection: collectionId });
     }
-  };
+  }, [currentIndex, questions.length, currentPage, totalPages, collectionId, prefetchQuestions]);
 
   return {
     handleNext,

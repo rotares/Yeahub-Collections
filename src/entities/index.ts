@@ -9,5 +9,6 @@ export {
   useGetPublicQuestionsQuery,
   useGetQuestionByIdQuery,
   usePrefetch as usePrefetchQuestions,
+  selectCachedPageData,
 } from './question';
 export { useGetSpecializationsQuery } from './specialization';

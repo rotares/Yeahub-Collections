@@ -20,4 +20,4 @@ export const questionApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetPublicQuestionsQuery, useGetQuestionByIdQuery } = questionApi;
+export const { useGetPublicQuestionsQuery, useGetQuestionByIdQuery, usePrefetch } = questionApi;

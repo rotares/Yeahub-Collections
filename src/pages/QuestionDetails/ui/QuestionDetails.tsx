@@ -1,9 +1,19 @@
 import { Navigate, useParams } from 'react-router-dom';
+import { useQueryParams } from '../../../shared/lib/query-params';
 import { useQuestionDetails } from '../model';
+import { useQuestionNavigation } from '../model/useQuestionNavigation';
 
 export const QuestionDetails = () => {
   const { questionId, collectionId } = useParams();
-  const { question, isLoading } = useQuestionDetails(questionId, collectionId);
+  const { params } = useQueryParams();
+
+  const { question, isLoading } = useQuestionDetails(params.page, questionId, collectionId);
+
+  const { handleNext, handlePrev } = useQuestionNavigation({
+    collectionId: Number(collectionId),
+    currentQuestionId: Number(questionId),
+    currentPage: params.page,
+  });
 
   if (!questionId || !collectionId) {
     return <Navigate to={'/collections'} replace />;
@@ -13,5 +23,14 @@ export const QuestionDetails = () => {
     return <div>Загрузка</div>;
   }
 
-  return <div>{question?.title}</div>;
+  return (
+    <div>
+      {question?.title}
+
+      <div>
+        <button onClick={handlePrev}>prev</button>
+        <button onClick={handleNext}>next</button>
+      </div>
+    </div>
+  );
 };

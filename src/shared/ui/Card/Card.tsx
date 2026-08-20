@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 import styles from './Card.module.css';
 
 interface CardProps {
@@ -7,14 +7,15 @@ interface CardProps {
   children: ReactNode;
   footer?: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export const Card = ({ header, children, footer, className = '' }: CardProps) => {
+export const Card = memo(({ header, children, footer, className = '', onClick }: CardProps) => {
   return (
-    <div className={clsx(className, styles.card)}>
+    <div onClick={onClick} className={clsx(className, styles.card)}>
       {header && <header className={styles.cardHeader}>{header}</header>}
       {children}
-      {footer && <footer>{header}</footer>}
+      {footer && <footer>{footer}</footer>}
     </div>
   );
-};
+});

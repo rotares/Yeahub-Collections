@@ -1,0 +1,53 @@
+import { type CollectionDto } from '@/shared/api/types/';
+import { Badge } from '@/shared/ui/Badge';
+import { Card } from '@/shared/ui/Card';
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import { CollectionPreview } from '../CollectionPreview';
+import styles from './CollectionItem.module.css';
+
+type CollectionItemProps = Pick<
+  CollectionDto,
+  'id' | 'title' | 'isFree' | 'specializations' | 'questionsCount' | 'keywords'
+>;
+
+//todo
+export const CollectionItem = memo(
+  ({ id, title, keywords, isFree, questionsCount, specializations }: CollectionItemProps) => {
+    return (
+      <Link className={styles.linkWrapper} to={`/collections/${id}`}>
+        <Card className={styles.card}>
+          <div className={styles.imgWrapper}>
+            <img src={'/src/assets/Collection.jpg'} alt={title} className={styles.img} />
+          </div>
+          <div className={styles.content}>
+            {keywords.length > 0 && (
+              <div className={styles.tags}>
+                {keywords.slice(0, 7).map((tag) => (
+                  <Badge text={tag} />
+                ))}
+              </div>
+            )}
+
+            <div className={styles.infoWrapper}>
+              <h3 className={styles.title}>{title}</h3>
+
+              <div className={styles.meta}>
+                <CollectionPreview text={isFree ? 'Для всех' : 'Для участников'} />
+                <CollectionPreview text={questionsCount} />
+              </div>
+
+              {specializations.length > 0 && (
+                <div className={styles.specInfo}>
+                  {specializations.map((spec) => (
+                    <span className={styles.spec}>{spec.title}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </Card>
+      </Link>
+    );
+  },
+);

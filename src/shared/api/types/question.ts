@@ -12,6 +12,7 @@ export interface QuestionDto {
   createdBy: CreatedBy;
   keywords: string[];
   questionSkills: SkillDto[];
+  // questionsCount: number;
 }
 
 export interface GetPublicQuestionsParams extends PaginationParams {

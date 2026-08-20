@@ -1,0 +1,9 @@
+.preview {
+  display: flex;
+  column-gap: 6px;
+}
+
+.text {
+  font-size: 14px;
+  color: var(--color-purple-700);
+}

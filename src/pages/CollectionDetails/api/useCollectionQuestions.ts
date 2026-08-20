@@ -19,7 +19,6 @@ export const useCollectionQuestions = (collectionId: string | undefined) => {
   );
 
   const total = data?.total ?? 1;
-
   const limit = params.limit ?? data?.limit ?? 10;
 
   const totalPages = useMemo(() => {

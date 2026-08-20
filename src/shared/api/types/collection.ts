@@ -17,7 +17,7 @@ export interface CollectionDto {
   imageSrc: string | null;
   isFree: boolean;
   keywords: string[];
-  questionCount: number;
+  questionsCount: number;
   specializations: SpecializationDto[];
   company: CompanyDto;
 }

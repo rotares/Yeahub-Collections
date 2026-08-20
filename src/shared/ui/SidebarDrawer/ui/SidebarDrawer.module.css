@@ -1,0 +1,30 @@
+.sidebarDrawer {
+  position: static;
+  height: fit-content;
+  transform: none;
+  width: 100%;
+  max-width: 360px;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .sidebarDrawer {
+    z-index: 40;
+    overflow-y: auto;
+    position: fixed;
+    transform: translateX(100%);
+    top: var(--header-height, 60px);
+
+    right: 0;
+    background-color: var(--background-white);
+  }
+
+  .sidebarDrawer.open {
+    transform: translateX(0);
+  }
+
+  .card {
+    border-radius: none !important;
+    height: 100vh;
+  }
+}

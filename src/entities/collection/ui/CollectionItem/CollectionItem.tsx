@@ -1,4 +1,5 @@
 import { type CollectionDto } from '@/shared/api/types/';
+import { isArrayShallowEqual } from '@/shared/lib/utils';
 import { Badge } from '@/shared/ui/Badge';
 import { Card } from '@/shared/ui/Card';
 import { memo } from 'react';
@@ -49,5 +50,26 @@ export const CollectionItem = memo(
         </Card>
       </Link>
     );
+  },
+  (prevProps, nextProps) => {
+    const isPrimitiveEqual =
+      prevProps.id === nextProps.id &&
+      prevProps.isFree === nextProps.isFree &&
+      prevProps.questionsCount === nextProps.questionsCount &&
+      prevProps.title === nextProps.title;
+
+    if (!isPrimitiveEqual) return false;
+
+    const isKeywordsEqual = isArrayShallowEqual(prevProps.keywords, nextProps.keywords);
+
+    if (!isKeywordsEqual) return false;
+
+    const isSpecializationsEqual = isArrayShallowEqual(
+      prevProps.specializations,
+      nextProps.specializations,
+      (prevSpec, nextSpec) => prevSpec.id === nextSpec.id && prevSpec.title === nextSpec.title,
+    );
+
+    return isSpecializationsEqual;
   },
 );

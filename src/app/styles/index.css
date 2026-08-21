@@ -10,6 +10,7 @@
   --color-purple-100: #d2b6ff;
   --color-purple-700: #6a0bff;
   --color-gray: #757575;
+  --color-black-50: #e8e8e8;
   --color-green-200: #dff8ea;
   --color-green-750: #008616;
 
@@ -17,6 +18,8 @@
 
   --container-width: 1280px;
   --button-height: 42px;
+  --input-height: 48px;
+
   --duration: 0.2s;
 }
 

@@ -1,0 +1,106 @@
+import clsx from 'clsx';
+import { DOTS, usePagination } from '../model';
+import styles from './Pagination.module.css';
+
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  isDisabled?: boolean;
+}
+
+export const Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+  isDisabled,
+}: PaginationProps) => {
+  const paginationRange = usePagination({ currentPage, totalPages });
+
+  if (currentPage === 0 || totalPages <= 1) {
+    return null;
+  }
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.pagination}>
+        <button
+          type="button"
+          disabled={currentPage === 1 || isDisabled}
+          onClick={handlePrevious}
+          className={clsx(styles.navButton, styles.button)}
+        >
+          <svg
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.06694 0.183058C6.31102 0.427136 6.31102 0.822864 6.06694 1.06694L2.13388 5H13.9583C14.3035 5 14.5833 5.27982 14.5833 5.625C14.5833 5.97018 14.3035 6.25 13.9583 6.25H2.13388L6.06694 10.1831C6.31102 10.4271 6.31102 10.8229 6.06694 11.0669C5.82286 11.311 5.42714 11.311 5.18306 11.0669L0.183058 6.06694C-0.0610194 5.82286 -0.0610194 5.42714 0.183058 5.18306L5.18306 0.183058C5.42714 -0.0610194 5.82286 -0.0610194 6.06694 0.183058Z"
+              fill="#6A0BFF"
+            />
+          </svg>
+        </button>
+
+        <div className={styles.pagination}>
+          {paginationRange.map((pageNumber, index) => {
+            if (pageNumber === DOTS) {
+              return (
+                <div className={styles.dot} key={`dots-${index}`}>
+                  ...
+                </div>
+              );
+            }
+
+            const isActive = pageNumber === currentPage;
+            return (
+              <button
+                key={pageNumber}
+                type="button"
+                disabled={isDisabled}
+                onClick={() => onPageChange(Number(pageNumber))}
+                className={clsx(styles.pageButton, styles.button, isActive && styles.active)}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        </div>
+
+        <button
+          className={clsx(styles.navButton, styles.button)}
+          type="button"
+          disabled={currentPage === totalPages || isDisabled}
+          onClick={handleNext}
+        >
+          <svg
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.51639 11.0669C8.76047 11.311 9.1562 11.311 9.40027 11.0669L14.4003 6.06694C14.6444 5.82287 14.6444 5.42714 14.4003 5.18306L9.40028 0.18306C9.1562 -0.0610173 8.76047 -0.0610174 8.51639 0.18306C8.27232 0.427137 8.27232 0.822866 8.51639 1.06694L12.4495 5L0.625001 5C0.279823 5 1.04386e-06 5.27982 9.83506e-07 5.625C9.23153e-07 5.97018 0.279823 6.25 0.625001 6.25L12.4495 6.25L8.51639 10.1831C8.27231 10.4271 8.27231 10.8229 8.51639 11.0669Z"
+              fill="#6A0BFF"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};

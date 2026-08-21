@@ -1,0 +1,80 @@
+.button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  font-weight: 600;
+}
+
+.navButton {
+  border: 1px solid var(--color-purple-700);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  transition-duration: var(--duration);
+  background-color: transparent;
+}
+
+.navButton svg {
+  fill: currentColor;
+}
+
+.navButton:hover {
+  background-color: var(--color-purple-100);
+}
+
+.navButton:disabled {
+  cursor: not-allowed;
+  color: var(--color-gray);
+}
+
+.pageButton {
+  border-radius: 2px;
+  padding: 2px 6px;
+  width: 23px;
+  height: 27px;
+}
+
+.pageButton.active {
+  background-color: var(--color-purple-700);
+  color: var(--background-white);
+}
+
+.wrapper {
+  margin-inline: auto;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  min-width: 210px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 400px) {
+  .pagination {
+    min-width: 0;
+    gap: 5px;
+  }
+
+  .list {
+    gap: 3px;
+  }
+
+}

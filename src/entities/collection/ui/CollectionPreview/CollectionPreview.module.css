@@ -1,9 +1,16 @@
 .preview {
   display: flex;
   column-gap: 6px;
+  align-items: center;
 }
 
 .text {
   font-size: 14px;
   color: var(--color-purple-700);
+}
+
+.icon {
+  height: 2opx;
+  aspect-ratio: 1;
+  color: inherit;
 }

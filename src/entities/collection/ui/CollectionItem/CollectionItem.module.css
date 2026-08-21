@@ -8,6 +8,11 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+.title {
+  font-size: 16px;
+  font-weight: normal;
+}
+
 .imgWrapper {
   max-width: 150px;
   max-height: 150px;

@@ -6,6 +6,8 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { CollectionPreview } from '../CollectionPreview';
 import styles from './CollectionItem.module.css';
+import Icon from '@/shared/assets/questionIcon.svg';
+import CollectionImg from '@/shared/assets/Collection.jpg';
 
 type CollectionItemProps = Pick<
   CollectionDto,
@@ -19,7 +21,7 @@ export const CollectionItem = memo(
       <Link className={styles.linkWrapper} to={`/collections/${id}`}>
         <Card className={styles.card}>
           <div className={styles.imgWrapper}>
-            <img src={'/src/assets/Collection.jpg'} alt={title} className={styles.img} />
+            <img src={CollectionImg} alt={title} className={styles.img} />
           </div>
           <div className={styles.content}>
             {keywords.length > 0 && (
@@ -35,7 +37,7 @@ export const CollectionItem = memo(
 
               <div className={styles.meta}>
                 <CollectionPreview text={isFree ? 'Для всех' : 'Для участников'} />
-                <CollectionPreview text={questionsCount} />
+                <CollectionPreview icon={Icon} text={`${questionsCount} вопросов`} />
               </div>
 
               {specializations.length > 0 && (

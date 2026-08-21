@@ -2,14 +2,14 @@ import { CollectionList } from '@/entities';
 import { AccessFilter, CollectionSearchInput, SpecializationFilter } from '@/features';
 import { useUiContext } from '@/shared/lib/hooks';
 import { Card } from '@/shared/ui/Card';
+import { FilterBar } from '@/shared/ui/FilterBar';
 import { Pagination } from '@/shared/ui/Pagintation';
-import { SidebarDrawer } from '@/shared/ui/SidebarDrawer';
 import { useCollectionData } from '../api';
 import styles from './CollectionsPage.module.css';
 
 export const CollectionsPage = () => {
   const { data, isLoading, onPageChange, page, totalPages } = useCollectionData();
-  const { handleToggle, isOpen, ref } = useUiContext();
+  const { toggleDrawer } = useUiContext();
 
   if (!data || isLoading) {
     return <div>Загрузка</div>;
@@ -22,14 +22,13 @@ export const CollectionsPage = () => {
           <CollectionList items={data} />
           <Pagination currentPage={page} onPageChange={onPageChange} totalPages={totalPages!} />
         </Card>
-        <SidebarDrawer isOpen={isOpen} ref={ref}>
+        <FilterBar>
           <CollectionSearchInput />
           <SpecializationFilter />
           <AccessFilter />
-        </SidebarDrawer>
+        </FilterBar>
       </section>
-
-      <button onClick={handleToggle}>TOGGLE</button>
+      <button onClick={() => toggleDrawer('side')}>123</button>
     </>
   );
 };

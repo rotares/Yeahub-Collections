@@ -1,0 +1,30 @@
+.chip {
+  height: var(--button-height);
+  border: 1px solid var(--color-gray);
+  transition-duration: var(--duration);
+  background-color: transparent;
+  border-radius: 12px;
+  padding: 12px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.chip.active {
+  border-color: var(--color-purple-700);
+}
+
+.default {
+  cursor: pointer;
+}
+
+.default:hover {
+  color: var(--background-white);
+  background-color: var(--color-purple-700);
+  border-color: var(--color-purple-700);
+}
+
+.static {
+  pointer-events: none;
+}

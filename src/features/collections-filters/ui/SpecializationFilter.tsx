@@ -3,6 +3,8 @@ import { FilterSelect } from '@/shared/ui/FilterSelect';
 import { memo } from 'react';
 import { useFilterSelect } from '../model';
 import { useMemo } from 'react';
+import { specializationTitleMapper } from '../utils';
+
 export const SpecializationFilter = memo(() => {
   const { data: specializations = [], isLoading } = useGetSpecializationsQuery({});
 
@@ -14,7 +16,7 @@ export const SpecializationFilter = memo(() => {
   const options = useMemo(
     () =>
       specializations.map((spec) => ({
-        title: spec.title,
+        title: specializationTitleMapper(spec.title),
         value: spec.id,
       })),
     [specializations],

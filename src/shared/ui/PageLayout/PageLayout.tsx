@@ -1,10 +1,51 @@
 import type { ReactNode } from 'react';
+import { Card } from '../Card';
 import styles from './PageLayout.module.css';
 
 type PageLayoutProps = {
   children: ReactNode;
 };
 
-export const PageLayout = ({ children }: PageLayoutProps) => {
-  return <section className={styles.page}>{children}</section>;
+type PageLayoutContentProps = {
+  children: ReactNode;
 };
+
+type PageLayoutHeaderProps = {
+  title: string;
+  action?: ReactNode;
+};
+
+type PageLayoutAsideProps = {
+  children: ReactNode;
+};
+
+const PageLayoutRoot = ({ children }: PageLayoutProps) => {
+  return <div className={styles.page}>{children}</div>;
+};
+
+const Content = ({ children }: PageLayoutContentProps) => {
+  return (
+    <div className={styles.content}>
+      <Card className={styles.card}>{children}</Card>
+    </div>
+  );
+};
+
+const Header = ({ title, action }: PageLayoutHeaderProps) => {
+  return (
+    <div className={styles.header}>
+      <h2 className={styles.title}>{title}</h2>
+      {action && <div>{action}</div>}
+    </div>
+  );
+};
+
+const Aside = ({ children }: PageLayoutAsideProps) => {
+  return children;
+};
+
+export const PageLayout = Object.assign(PageLayoutRoot, {
+  Content,
+  Header,
+  Aside,
+});

@@ -1,17 +1,23 @@
 import { AccessFilter, CollectionSearchInput, SpecializationFilter } from '@/features';
 import { FilterBar } from '@/shared/ui/FilterBar';
-import { CollectionListSection } from '@/widgets';
 import { PageLayout } from '@/shared/ui/PageLayout';
+import { CollectionListSection } from '@/widgets';
 
 export const CollectionsPage = () => {
   return (
     <PageLayout>
-      <CollectionListSection />
-      <FilterBar>
-        <CollectionSearchInput />
-        <SpecializationFilter />
-        <AccessFilter />
-      </FilterBar>
+      <PageLayout.Content>
+        <PageLayout.Header title="Коллекции" />
+        <CollectionListSection />
+      </PageLayout.Content>
+
+      <PageLayout.Aside>
+        <FilterBar>
+          <CollectionSearchInput />
+          <SpecializationFilter />
+          <AccessFilter />
+        </FilterBar>
+      </PageLayout.Aside>
     </PageLayout>
   );
 };

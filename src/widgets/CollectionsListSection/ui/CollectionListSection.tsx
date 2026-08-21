@@ -1,7 +1,6 @@
-import { Pagination } from '@/shared/ui/Pagintation';
-import { useCollectionData } from '../model';
-import { Card } from '@/shared/ui/Card';
 import { CollectionList } from '@/entities';
+import { Pagination } from '@/features/pagination';
+import { useCollectionData } from '../model';
 import styles from './CollectionListSection.module.css';
 
 export const CollectionListSection = () => {
@@ -12,9 +11,9 @@ export const CollectionListSection = () => {
   }
 
   return (
-    <Card className={styles.content}>
+    <div className={styles.content}>
       <CollectionList items={data} />
       <Pagination currentPage={page} onPageChange={onPageChange} totalPages={totalPages!} />
-    </Card>
+    </div>
   );
 };

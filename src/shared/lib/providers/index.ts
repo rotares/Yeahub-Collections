@@ -1,1 +1,1 @@
-export { UiContext, UiProvider } from './UiContext';
+export { UiContext, UiProvider, type DrawerId } from './UiContext';

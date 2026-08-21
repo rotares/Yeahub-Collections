@@ -2,7 +2,3 @@
   display: flex;
   gap: 20px;
 }
-
-.content {
-  flex: 1 80%;
-}

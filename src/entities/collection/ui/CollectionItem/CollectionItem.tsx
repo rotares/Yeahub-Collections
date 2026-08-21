@@ -1,4 +1,6 @@
 import { type CollectionDto } from '@/shared/api/types/';
+import CollectionImg from '@/shared/assets/Collection.jpg';
+import Icon from '@/shared/assets/questionIcon.svg';
 import { isArrayShallowEqual } from '@/shared/lib/utils';
 import { Badge } from '@/shared/ui/Badge';
 import { Card } from '@/shared/ui/Card';
@@ -6,8 +8,6 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { CollectionPreview } from '../CollectionPreview';
 import styles from './CollectionItem.module.css';
-import Icon from '@/shared/assets/questionIcon.svg';
-import CollectionImg from '@/shared/assets/Collection.jpg';
 
 type CollectionItemProps = Pick<
   CollectionDto,
@@ -19,7 +19,7 @@ export const CollectionItem = memo(
   ({ id, title, keywords, isFree, questionsCount, specializations }: CollectionItemProps) => {
     return (
       <Link className={styles.linkWrapper} to={`/collections/${id}`}>
-        <Card className={styles.card}>
+        <Card key={id} className={styles.card}>
           <div className={styles.imgWrapper}>
             <img src={CollectionImg} alt={title} className={styles.img} />
           </div>
@@ -27,7 +27,7 @@ export const CollectionItem = memo(
             {keywords.length > 0 && (
               <div className={styles.tags}>
                 {keywords.slice(0, 7).map((tag) => (
-                  <Badge text={tag} />
+                  <Badge key={`${tag}${id}`} text={tag} />
                 ))}
               </div>
             )}
@@ -43,7 +43,9 @@ export const CollectionItem = memo(
               {specializations.length > 0 && (
                 <div className={styles.specInfo}>
                   {specializations.map((spec) => (
-                    <span className={styles.spec}>{spec.title}</span>
+                    <span key={`${spec.title}${id}`} className={styles.spec}>
+                      {spec.title}
+                    </span>
                   ))}
                 </div>
               )}
@@ -75,3 +77,5 @@ export const CollectionItem = memo(
     return isSpecializationsEqual;
   },
 );
+
+CollectionItem.displayName = 'CollectionItem';

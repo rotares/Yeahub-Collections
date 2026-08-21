@@ -15,3 +15,5 @@ export const QuestionItem = memo(({ item, onClick }: QuestionItemProps) => {
     </Card>
   );
 });
+
+QuestionItem.displayName = 'QuestionItem';

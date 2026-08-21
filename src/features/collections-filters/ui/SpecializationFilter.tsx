@@ -1,8 +1,7 @@
 import { useGetSpecializationsQuery } from '@/entities/specialization';
 import { FilterSelect } from '@/shared/ui/FilterSelect';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { useFilterSelect } from '../model';
-import { useMemo } from 'react';
 import { specializationTitleMapper } from '../utils';
 
 export const SpecializationFilter = memo(() => {
@@ -32,3 +31,5 @@ export const SpecializationFilter = memo(() => {
     />
   );
 });
+
+SpecializationFilter.displayName = 'SpecializationFilter';

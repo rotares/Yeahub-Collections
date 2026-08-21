@@ -1,5 +1,5 @@
 import { QuestionList } from '@/entities';
-import { Pagination } from '@/shared/ui/Pagintation';
+import { Pagination } from '@/features/pagination';
 import { Navigate, useParams } from 'react-router-dom';
 import { useCollectionDetails, useCollectionQuestions } from '../api';
 

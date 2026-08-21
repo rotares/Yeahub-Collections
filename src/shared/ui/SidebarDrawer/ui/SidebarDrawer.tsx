@@ -39,8 +39,6 @@ export const SidebarDrawer = ({ id, children, type = 'burger' }: Props) => {
     }
   };
 
-  console.log(type);
-
   return (
     <dialog
       ref={ref}

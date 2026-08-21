@@ -19,3 +19,5 @@ export const Card = memo(({ header, children, footer, className = '', onClick }:
     </div>
   );
 });
+
+Card.displayName = 'Card';

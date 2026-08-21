@@ -1,10 +1,10 @@
 const ACCESS_FILTERS = [
   {
-    title: 'Public',
+    title: 'Для всех',
     value: true,
   },
   {
-    title: 'Private',
+    title: 'Для участников',
     value: false,
   },
 ];
@@ -23,7 +23,7 @@ export const AccessFilter = memo(() => {
       options={ACCESS_FILTERS}
       onToggle={handleToggle}
       isSelected={isSelected}
-      title="Тип"
+      title="Доступ"
     />
   );
 });

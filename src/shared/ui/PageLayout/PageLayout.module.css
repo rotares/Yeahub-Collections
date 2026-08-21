@@ -1,0 +1,12 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 1280px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}

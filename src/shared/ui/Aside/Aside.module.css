@@ -1,0 +1,14 @@
+.aside {
+  position: static;
+  height: fit-content;
+  transform: none;
+  width: 100%;
+  max-width: 340px;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .aside {
+    display: none;
+  }
+}

@@ -1,0 +1,1 @@
+export { CollectionAsideContainer } from './CollectionAsideContainer';

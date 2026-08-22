@@ -12,7 +12,7 @@ export const CollectionsPage = () => {
   return (
     <PageLayout>
       <PageLayout.Content>
-        <PageLayout.Header title="Коллекции" action={<SidebarToggle type="side" />} />
+        <PageLayout.Header divider title="Коллекции" action={<SidebarToggle type="side" />} />
         <CollectionListSection />
       </PageLayout.Content>
 

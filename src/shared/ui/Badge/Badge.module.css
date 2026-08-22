@@ -1,8 +1,15 @@
 .badge {
   display: inline-block;
-  padding: 3px 8px;
-  background-color: var(--color-green-200);
-  border-radius: var(--border-radius);
+}
+
+.badge.keyword {
+  color: var(--color-purple-700)
+}
+
+.badge.green {
   color: var(--color-green-750);
   font-size: 12px;
+  background-color: var(--color-green-200);
+  border-radius: var(--border-radius);
+  padding: 3px 8px;
 }

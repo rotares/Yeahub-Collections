@@ -1,0 +1,1 @@
+export { useCollectionDetails } from './useCollectionDetails';

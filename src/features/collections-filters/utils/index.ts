@@ -1,1 +1,0 @@
-export { specializationTitleMapper } from './specializationTitleMapper';

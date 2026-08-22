@@ -1,5 +1,15 @@
+import clsx from 'clsx';
 import styles from './Badge.module.css';
 
-export const Badge = ({ text }: { text: string }) => {
-  return <div className={styles.badge}>{text}</div>;
+type BadgeProps = {
+  type?: 'green' | 'keyword';
+  text: string;
+};
+
+export const Badge = ({ text, type = 'green' }: BadgeProps) => {
+  return (
+    <div className={clsx(styles.badge, type === 'green' ? styles.green : styles.keyword)}>
+      {text}
+    </div>
+  );
 };

@@ -1,8 +1,8 @@
 import { useGetSpecializationsQuery } from '@/entities/specialization';
+import { specializationTitleMapper } from '@/shared/lib/utils';
 import { FilterSelect } from '@/shared/ui/FilterSelect';
 import { memo, useMemo } from 'react';
 import { useFilterSelect } from '../model';
-import { specializationTitleMapper } from '../utils';
 
 export const SpecializationFilter = memo(() => {
   const { data: specializations = [], isLoading } = useGetSpecializationsQuery({});

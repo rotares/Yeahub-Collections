@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { ReactNode } from 'react';
 import { Card } from '../Card';
 import styles from './PageLayout.module.css';
@@ -8,6 +9,7 @@ type PageLayoutProps = {
 
 type PageLayoutContentProps = {
   children: ReactNode;
+  className?: string;
 };
 
 type PageLayoutHeaderProps = {
@@ -24,10 +26,10 @@ const PageLayoutRoot = ({ children }: PageLayoutProps) => {
   return <div className={styles.page}>{children}</div>;
 };
 
-const Content = ({ children }: PageLayoutContentProps) => {
+const Content = ({ children, className = '' }: PageLayoutContentProps) => {
   return (
     <div className={styles.content}>
-      <Card className={styles.card}>{children}</Card>
+      <Card className={clsx(styles.card, className)}>{children}</Card>
     </div>
   );
 };

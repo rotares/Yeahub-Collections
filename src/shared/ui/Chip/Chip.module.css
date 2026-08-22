@@ -1,6 +1,6 @@
 .chip {
   height: var(--button-height);
-  border: 1px solid var(--color-gray);
+  border: 1px solid var(--color-black-200);
   transition-duration: var(--duration);
   background-color: transparent;
   border-radius: 12px;
@@ -13,6 +13,7 @@
 
 .chip.active {
   border-color: var(--color-purple-700);
+  background-color: var(--color-purple-100);
 }
 
 .default {

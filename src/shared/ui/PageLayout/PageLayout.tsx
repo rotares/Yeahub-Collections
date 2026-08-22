@@ -13,6 +13,7 @@ type PageLayoutContentProps = {
 type PageLayoutHeaderProps = {
   title: string;
   action?: ReactNode;
+  divider: boolean;
 };
 
 type PageLayoutAsideProps = {
@@ -31,12 +32,15 @@ const Content = ({ children }: PageLayoutContentProps) => {
   );
 };
 
-const Header = ({ title, action }: PageLayoutHeaderProps) => {
+const Header = ({ title, action, divider = true }: PageLayoutHeaderProps) => {
   return (
-    <div className={styles.header}>
-      <h2 className={styles.title}>{title}</h2>
-      {action && <div>{action}</div>}
-    </div>
+    <>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        {action}
+      </div>
+      {divider && <div className={styles.divider}></div>}
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 .button {
   background-color: transparent;
-  height: 36px;
+  height: 34px;
   aspect-ratio: 1;
   border: none;
   display: flex;
@@ -10,11 +10,9 @@
   box-sizing: border-box;
   cursor: pointer;
   transition-duration: var(--duration);
-  
 }
 
 .burger {
-
 }
 
 .side {
@@ -25,7 +23,6 @@
     background-color: var(--color-black-50);
   }
 }
-
 
 @media (min-width: 1280px) {
   .button {

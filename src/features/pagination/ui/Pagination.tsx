@@ -35,7 +35,7 @@ export const Pagination = ({
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.pagination}>
+      <div className={clsx(styles.pagination)}>
         <button
           type="button"
           disabled={currentPage === 1 || isDisabled}

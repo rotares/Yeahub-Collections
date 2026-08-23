@@ -5,7 +5,7 @@ export {
   useGetPublicCollectionsQuery,
 } from './collection';
 export {
-  QuestionList,
+  QuestionAccordionList,
   selectCachedQuestions,
   useGetPublicQuestionsQuery,
   useGetQuestionByIdQuery,

@@ -1,0 +1,15 @@
+.wrapper {
+  height: 25px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  transform: rotate(180deg);
+}
+
+.arrow {
+  transition: all var(--duration);
+}

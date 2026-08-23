@@ -1,0 +1,22 @@
+.metricCard {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 12px;
+  background-color: var(--color-black-10);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.score {
+  padding: 2px 4px;
+  font-size: 14px;
+  background-color: var(--color-purple-700);
+  border-radius: 4px;
+  color: var(--background-white);
+}

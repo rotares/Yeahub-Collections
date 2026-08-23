@@ -57,8 +57,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  justify-content: space-between;
+}
+
+.pagination.multi {
   min-width: 210px;
+  justify-content: space-between;
 }
 
 .list {

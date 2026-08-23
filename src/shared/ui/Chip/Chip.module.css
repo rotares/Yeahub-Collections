@@ -9,6 +9,8 @@
   align-items: center;
   font-size: 16px;
   box-sizing: border-box;
+  min-width: 40px;
+  justify-content: center;
 }
 
 .chip.active {

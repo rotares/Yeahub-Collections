@@ -1,10 +1,11 @@
 import { SidebarToggle } from '@/features';
 import CollectionImg from '@/shared/assets/Collection.jpg';
 import { PageLayout } from '@/shared/ui/PageLayout';
+import { memo } from 'react';
 import { useCollectionDetails } from '../model';
 import styles from './CollectionDetailsPage.module.css';
 
-export const CollectionHeader = ({ collectionId }: { collectionId: string }) => {
+export const CollectionHeader = memo(({ collectionId }: { collectionId: string }) => {
   const { collectionData, isLoadingCollection } = useCollectionDetails(collectionId);
 
   if (isLoadingCollection || !collectionData) {
@@ -22,8 +23,10 @@ export const CollectionHeader = ({ collectionId }: { collectionId: string }) => 
         {collectionData.description}
       </div>
       <div className={styles.imgWrapper}>
-        <img className={styles.img} src={collectionData.imageSrc || CollectionImg} />
+        <img className={styles.img} src={CollectionImg} />
       </div>
     </PageLayout.Content>
   );
-};
+});
+
+CollectionHeader.displayName = 'CollectionHeader';

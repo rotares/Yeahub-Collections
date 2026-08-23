@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .imgWrapper {
     max-width: 100%;
     max-height: 100%;

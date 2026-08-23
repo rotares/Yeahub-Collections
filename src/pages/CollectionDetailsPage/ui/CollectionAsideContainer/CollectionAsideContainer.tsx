@@ -1,9 +1,10 @@
 import { Badge } from '@/shared/ui/Badge';
 import { Chip } from '@/shared/ui/Chip';
 import { InfoBlock } from '@/shared/ui/InfoBlock';
+import { memo } from 'react';
 import { useCollectionDetails } from '../../model';
 
-export const CollectionAsideContainer = ({ collectionId }: { collectionId: string }) => {
+export const CollectionAsideContainer = memo(({ collectionId }: { collectionId: string }) => {
   const { collectionData, isLoadingCollection } = useCollectionDetails(collectionId);
 
   if (isLoadingCollection || !collectionData) {
@@ -37,11 +38,9 @@ export const CollectionAsideContainer = ({ collectionId }: { collectionId: strin
       </InfoBlock>
 
       <InfoBlock title="Количество вопросов">
-        {collectionData.keywords.map((keyword) => (
-          <Chip type="static" key={keyword}>
-            {keyword}
-          </Chip>
-        ))}
+        <Chip type="static" key={'questionCount'}>
+          {collectionData.questionsCount}
+        </Chip>
       </InfoBlock>
 
       <InfoBlock title="Ключевые слова">
@@ -50,13 +49,17 @@ export const CollectionAsideContainer = ({ collectionId }: { collectionId: strin
         ))}
       </InfoBlock>
 
-      <InfoBlock type="row" title="Автор:">
-        <Badge
-          type="keyword"
-          text={collectionData.createdBy.username}
-          key={collectionData.createdBy.id}
-        />
-      </InfoBlock>
+      {collectionData?.createdBy?.username && (
+        <InfoBlock type="row" title="Автор:">
+          <Badge
+            type="keyword"
+            text={collectionData.createdBy.username}
+            key={collectionData.createdBy.id}
+          />
+        </InfoBlock>
+      )}
     </>
   );
-};
+});
+
+CollectionAsideContainer.displayName = 'CollectionAsideContainer';

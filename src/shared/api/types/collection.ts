@@ -20,7 +20,7 @@ export interface CollectionDto {
   questionsCount: number;
   specializations: SpecializationDto[];
   company: CompanyDto;
-  createdBy: CreatedBy;
+  createdBy: CreatedBy | null;
 }
 
 export interface GetPublicCollectionsParams extends PaginationParams {

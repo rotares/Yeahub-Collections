@@ -12,7 +12,7 @@
 }
 
 .inputWrapper:hover {
-  border-color: var(--color-purple-100);
+  border-color: var(--color-purple-700);
 }
 
 .inputWrapper:focus-within {

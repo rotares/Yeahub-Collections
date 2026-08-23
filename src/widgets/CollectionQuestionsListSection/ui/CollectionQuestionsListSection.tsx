@@ -1,7 +1,7 @@
-import { QuestionList } from '@/entities';
+import { QuestionAccordionList } from '@/entities';
 import { Pagination } from '@/features';
 import { useCollectionQuestions } from '../model';
-
+import styles from './CollectionQuestionsListSection.module.css';
 export const CollectionQuestionsListSection = ({ collectionId }: { collectionId: string }) => {
   const { handleChangePage, isLoadingQuestions, questionsData, totalPages, currentPage } =
     useCollectionQuestions(collectionId);
@@ -11,8 +11,8 @@ export const CollectionQuestionsListSection = ({ collectionId }: { collectionId:
   }
 
   return (
-    <div>
-      <QuestionList items={questionsData} />
+    <div className={styles.content}>
+      <QuestionAccordionList page={currentPage} questions={questionsData} />
       <Pagination
         currentPage={currentPage}
         onPageChange={handleChangePage}

@@ -19,7 +19,7 @@ export interface CollectionDto {
   keywords: string[];
   questionsCount: number;
   specializations: SpecializationDto[];
-  company: CompanyDto;
+  company: CompanyDto | null;
   createdBy: CreatedBy | null;
 }
 

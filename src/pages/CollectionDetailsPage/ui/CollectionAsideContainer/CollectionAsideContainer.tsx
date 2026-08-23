@@ -21,13 +21,15 @@ export const CollectionAsideContainer = memo(({ collectionId }: { collectionId: 
         ))}
       </InfoBlock>
 
-      <InfoBlock title="Компания">
-        {
-          <Chip type="static" key={collectionData.company.id}>
-            {collectionData.company.title}
-          </Chip>
-        }
-      </InfoBlock>
+      {collectionData.company && (
+        <InfoBlock title="Компания">
+          {
+            <Chip type="static" key={collectionData.company.id}>
+              {collectionData.company.title}
+            </Chip>
+          }
+        </InfoBlock>
+      )}
 
       <InfoBlock title="Доступ">
         {

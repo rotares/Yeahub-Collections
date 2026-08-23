@@ -12,8 +12,6 @@ export const SidebarToggle = ({ type }: SidebarToggleProps) => {
   const { openDrawer, closeDrawer } = useUiContext();
   const isDesktop = useMediaQuery('(min-width:1280px)');
 
-  console.log(isDesktop);
-
   useEffect(() => {
     if (isDesktop) {
       closeDrawer(type);

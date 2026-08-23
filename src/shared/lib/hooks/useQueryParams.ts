@@ -56,6 +56,10 @@ export const useQueryParams = () => {
     [setSearchParams],
   );
 
+  const resetQueryParams = useCallback(() => {
+    setSearchParams({});
+  }, [setSearchParams]);
+
   return {
     params: {
       page,
@@ -65,5 +69,6 @@ export const useQueryParams = () => {
       specializations,
     },
     setQueryParams,
+    resetQueryParams,
   };
 };

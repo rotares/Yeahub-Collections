@@ -1,0 +1,31 @@
+.button {
+  height: var(--button-height);
+  padding-inline: 16px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition-duration: var(--duration);
+  border-radius: 13px;
+  font-size: 16px;
+}
+
+.transparent {
+  border: 1px solid var(--color-purple-700);
+  color: var(--color-purple-700);
+}
+
+.transparent:hover {
+  background-color: var(--color-purple-100);
+}
+
+.filled {
+  background-color: var(--color-purple-700);
+  color: var(--background-white);
+}
+
+.filled:hover {
+  background-color: var(--color-purple-100);
+  color: var(--color-purple-700);
+}

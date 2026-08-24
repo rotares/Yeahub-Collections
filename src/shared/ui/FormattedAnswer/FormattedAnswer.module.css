@@ -1,0 +1,44 @@
+.text {
+  font-size: 16px;
+  line-height: 130%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.text pre {
+  margin: 0;
+  padding: 16px 20px;
+  background-color: #0f172a !important;
+  border: 1px solid #1e293b !important;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+  color: var(--background-white);
+  background: #0f172a !important;
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.text pre code {
+  font-size: 13.5px;
+  line-height: 1.55;
+  tab-size: 2;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.text :not(pre) > code {
+  color: var(--color-purple-700);
+}
+
+.text p {
+  margin-bottom: 10px;
+}

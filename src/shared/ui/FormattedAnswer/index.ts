@@ -1,0 +1,1 @@
+export { FormattedAnswer } from './FormattedAnswer';

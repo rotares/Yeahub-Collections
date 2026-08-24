@@ -1,12 +1,12 @@
 import type { QuestionDto } from '@/shared/api/types';
 import { Card } from '@/shared/ui/Card';
 import { DropdownArrow } from '@/shared/ui/DropdownArrow';
+import { FormattedAnswer } from '@/shared/ui/FormattedAnswer';
 import { MetricCard } from '@/shared/ui/MetricCard';
 import clsx from 'clsx';
 import { memo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './QuestionAccordionItem.module.css';
-
 type Props = {
   question: QuestionDto;
   defaultOpen?: boolean;
@@ -15,6 +15,7 @@ type Props = {
 
 export const QuestionAccordionItem = memo(({ question, defaultOpen = false, page }: Props) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const location = useLocation();
 
   return (
     <Card className={clsx(styles.item)}>
@@ -30,10 +31,7 @@ export const QuestionAccordionItem = memo(({ question, defaultOpen = false, page
             <MetricCard title="Сложность" score={question.complexity} />
           </div>
 
-          <div
-            className={styles.answer}
-            dangerouslySetInnerHTML={{ __html: question.shortAnswer || question.longAnswer }}
-          />
+          <FormattedAnswer text={question.shortAnswer || question.longAnswer} />
 
           <Link
             className={styles.link}
@@ -41,6 +39,9 @@ export const QuestionAccordionItem = memo(({ question, defaultOpen = false, page
             to={{
               search: `page=${page}`,
               pathname: `${question.id}`,
+            }}
+            state={{
+              from: location.pathname,
             }}
           >
             Подробнее

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Chip } from '../Chip';
 import styles from './FilterSelect.module.css';
 export interface FilterOption<T> {
@@ -11,6 +12,7 @@ interface FilterSelectProps<T> {
   isSelected: (value: T) => boolean;
   onToggle: (value: T) => void;
   isLoading?: boolean;
+  maxVisible?: number;
 }
 
 export const FilterSelect = <T,>({
@@ -19,7 +21,13 @@ export const FilterSelect = <T,>({
   isSelected,
   onToggle,
   isLoading,
+  maxVisible,
 }: FilterSelectProps<T>) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const shouldTruncate = Boolean(maxVisible && options.length > maxVisible);
+  const visibleOptions = shouldTruncate && !isExpanded ? options.slice(0, maxVisible) : options;
+
   if (isLoading) {
     return <div>Загрузка...</div>;
   }
@@ -28,7 +36,7 @@ export const FilterSelect = <T,>({
       <h4 className={styles.title}>{title}</h4>
 
       <div className={styles.filterWrapper}>
-        {options.map(({ title: optionTitle, value }) => {
+        {visibleOptions.map(({ title: optionTitle, value }) => {
           const active = isSelected(value);
 
           return (
@@ -38,6 +46,16 @@ export const FilterSelect = <T,>({
           );
         })}
       </div>
+
+      {shouldTruncate && (
+        <button
+          type="button"
+          className={styles.showMoreBtn}
+          onClick={() => setIsExpanded((prev) => !prev)}
+        >
+          {isExpanded ? 'Скрыть' : 'Показать все'}
+        </button>
+      )}
     </div>
   );
 };

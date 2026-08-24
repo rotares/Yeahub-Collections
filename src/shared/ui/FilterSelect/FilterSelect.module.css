@@ -14,3 +14,25 @@
   gap: 5px;
   flex-wrap: wrap;
 }
+
+.showMoreBtn {
+  background-color: transparent;
+  border: none;
+  color: var(--color-purple-700);
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition-duration: var(--duration);
+  padding: 5px;
+  align-self: flex-start;
+
+  &:hover {
+    opacity: 0.7
+  }
+}
+
+
+
+
+

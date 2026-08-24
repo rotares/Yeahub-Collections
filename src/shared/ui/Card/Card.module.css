@@ -4,10 +4,20 @@
   border-radius: var(--border-radius);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   display: flex;
-  gap: 20px;
+  gap: 10px;
   flex-direction: column;
 }
 
-.cardHeader {
-  margin-bottom: 15px;
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-black-50);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: normal;
 }

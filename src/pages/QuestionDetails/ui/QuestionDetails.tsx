@@ -1,36 +1,48 @@
 import { useQueryParams } from '@/shared/lib/hooks';
+import { FilterBar } from '@/shared/ui/FilterBar';
+import { PageLayout } from '@/shared/ui/PageLayout';
+import { QuestionDetailsSection } from '@/widgets';
 import { Navigate, useParams } from 'react-router-dom';
-import { useQuestionDetails } from '../model';
-import { useQuestionNavigation } from '../model/useQuestionNavigation';
+import { PageBackButton } from '../../../shared/ui/PageBackButton';
+import { QuestionAsideContainer } from './QuestionAsideContainer/QuestionAsideContainer';
+import { QuestionDetailsHeader } from './QuestionDetailsHeader/QuestionDetailsHeader';
 
 export const QuestionDetails = () => {
   const { questionId, collectionId } = useParams();
   const { params } = useQueryParams();
 
-  const { question, isLoading } = useQuestionDetails(params.page, questionId, collectionId);
-
-  const { handleNext, handlePrev } = useQuestionNavigation({
-    collectionId: Number(collectionId),
-    currentQuestionId: Number(questionId),
-    currentPage: params.page,
-  });
-
   if (!questionId || !collectionId) {
     return <Navigate to={'/collections'} replace />;
   }
 
-  if (isLoading) {
-    return <div>Загрузка</div>;
-  }
-
   return (
-    <div>
-      {question?.title}
+    <>
+      <PageBackButton collectionId={collectionId} />
+      <PageLayout>
+        <PageLayout.Content>
+          <QuestionDetailsHeader
+            page={params.page}
+            questionId={questionId}
+            collectionId={collectionId}
+          />
 
-      <div>
-        <button onClick={handlePrev}>prev</button>
-        <button onClick={handleNext}>next</button>
-      </div>
-    </div>
+          <QuestionDetailsSection
+            collectionId={collectionId}
+            page={params.page}
+            questionId={questionId}
+          />
+        </PageLayout.Content>
+
+        <PageLayout.Aside>
+          <FilterBar>
+            <QuestionAsideContainer
+              collectionId={collectionId}
+              page={params.page}
+              questionId={questionId}
+            />
+          </FilterBar>
+        </PageLayout.Aside>
+      </PageLayout>
+    </>
   );
 };

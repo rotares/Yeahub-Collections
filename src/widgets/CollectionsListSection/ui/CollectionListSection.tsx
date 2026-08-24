@@ -1,9 +1,9 @@
 import { CollectionList } from '@/entities';
-import { FiltersResetButton } from '@/features';
+import { FiltersResetButton, SidebarToggle } from '@/features';
 import { Pagination } from '@/features/pagination';
+import { Card } from '../../../shared/ui/Card';
 import { useCollectionData } from '../model';
 import styles from './CollectionListSection.module.css';
-
 export const CollectionListSection = () => {
   const { data, isLoading, onPageChange, page, totalPages } = useCollectionData();
 
@@ -11,20 +11,20 @@ export const CollectionListSection = () => {
     return <div>download</div>;
   }
 
-  if (data.length === 0) {
-    return (
-      <div className={styles.empty}>
-        <span>К сожалению, по запросу ничего не найдено.</span>
-        <span>Попробуйте изменить запрос или воспользуйтесь нашими категориями.</span>
-        <FiltersResetButton />
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.content}>
-      <CollectionList items={data} />
-      <Pagination currentPage={page} onPageChange={onPageChange} totalPages={totalPages!} />
-    </div>
+    <Card title="Коллекции" action={<SidebarToggle type="side" />}>
+      {data.length === 0 ? (
+        <div className={styles.empty}>
+          <span>К сожалению, по запросу ничего не найдено.</span>
+          <span>Попробуйте изменить запрос или воспользуйтесь нашими категориями.</span>
+          <FiltersResetButton />
+        </div>
+      ) : (
+        <>
+          <CollectionList items={data} />
+          <Pagination currentPage={page} onPageChange={onPageChange} totalPages={totalPages!} />
+        </>
+      )}
+    </Card>
   );
 };

@@ -22,6 +22,7 @@ export const useQuestionDetails = (page: number, questionId?: string, collection
 
   return {
     question: questionFromCache ?? questionFromApi,
-    isLoading: !questionFromCache && (isQuestionByIdLoading || isQuestionsLoading),
+    isLoading:
+      (!questionFromCache || !questionFromApi) && (isQuestionByIdLoading || isQuestionsLoading),
   };
 };

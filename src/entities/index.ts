@@ -6,6 +6,7 @@ export {
 } from './collection';
 export {
   QuestionAccordionList,
+  QuestionLongAnswer,
   selectCachedQuestions,
   useGetPublicQuestionsQuery,
   useGetQuestionByIdQuery,

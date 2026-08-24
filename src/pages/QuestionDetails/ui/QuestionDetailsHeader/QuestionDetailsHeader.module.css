@@ -31,13 +31,6 @@
   flex-direction: column;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-bottom: 10px;
-}
-
 @media (max-width: 768px) {
   .content {
     column-gap: 10px;

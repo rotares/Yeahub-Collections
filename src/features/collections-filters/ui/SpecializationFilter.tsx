@@ -5,7 +5,7 @@ import { memo, useMemo } from 'react';
 import { useFilterSelect } from '../model';
 
 export const SpecializationFilter = memo(() => {
-  const { data: specializations = [], isLoading } = useGetSpecializationsQuery({});
+  const { data: specializations = [], isLoading } = useGetSpecializationsQuery({ limit: 10 });
 
   const { handleToggle, isSelected } = useFilterSelect({
     key: 'specializations',
@@ -23,6 +23,7 @@ export const SpecializationFilter = memo(() => {
 
   return (
     <FilterSelect
+      maxVisible={5}
       options={options}
       isSelected={isSelected}
       onToggle={handleToggle}

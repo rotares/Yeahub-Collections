@@ -1,6 +1,4 @@
-import clsx from 'clsx';
 import type { ReactNode } from 'react';
-import { Card } from '../Card';
 import styles from './PageLayout.module.css';
 
 type PageLayoutProps = {
@@ -12,12 +10,6 @@ type PageLayoutContentProps = {
   className?: string;
 };
 
-type PageLayoutHeaderProps = {
-  title: string;
-  action?: ReactNode;
-  divider: boolean;
-};
-
 type PageLayoutAsideProps = {
   children: ReactNode;
 };
@@ -27,23 +19,7 @@ const PageLayoutRoot = ({ children }: PageLayoutProps) => {
 };
 
 const Content = ({ children, className = '' }: PageLayoutContentProps) => {
-  return (
-    <div className={styles.content}>
-      <Card className={clsx(styles.card, className)}>{children}</Card>
-    </div>
-  );
-};
-
-const Header = ({ title, action, divider = true }: PageLayoutHeaderProps) => {
-  return (
-    <>
-      <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
-        {action}
-      </div>
-      {divider && <div className={styles.divider}></div>}
-    </>
-  );
+  return <div className={styles.content}>{children}</div>;
 };
 
 const Aside = ({ children }: PageLayoutAsideProps) => {
@@ -52,6 +28,5 @@ const Aside = ({ children }: PageLayoutAsideProps) => {
 
 export const PageLayout = Object.assign(PageLayoutRoot, {
   Content,
-  Header,
   Aside,
 });

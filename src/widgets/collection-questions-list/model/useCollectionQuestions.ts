@@ -5,7 +5,7 @@ import { useCallback, useMemo } from 'react';
 export const useCollectionQuestions = (collectionId: number) => {
   const { params, setQueryParams } = useQueryParams();
 
-  const { data, isLoading } = useGetPublicQuestionsQuery({
+  const { data, isLoading, isError } = useGetPublicQuestionsQuery({
     page: params.page,
     collection: collectionId,
   });
@@ -29,5 +29,6 @@ export const useCollectionQuestions = (collectionId: number) => {
     handleChangePage,
     questionsData: data?.data || [],
     isLoadingQuestions: isLoading,
+    isError,
   };
 };

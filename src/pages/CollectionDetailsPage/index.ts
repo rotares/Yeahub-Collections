@@ -1,1 +1,1 @@
-export { CollectionDetailsPage } from './ui/CollectionDetailsPage';
+export { CollectionDetailsPage as default } from './ui/CollectionDetailsPage';

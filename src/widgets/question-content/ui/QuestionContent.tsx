@@ -2,7 +2,7 @@ import { QuestionAnswerSkeleton, QuestionLongAnswer, useQuestionDetails } from '
 import { QuestionNavigate, QuestionNavigateSkeleton } from '@/features';
 import { Card } from '@/shared/ui/Card';
 import { FormattedAnswer } from '@/shared/ui/FormattedAnswer';
-
+import { Navigate } from 'react-router-dom';
 export const QuestionContentWidget = ({
   questionId,
   collectionId,
@@ -12,7 +12,11 @@ export const QuestionContentWidget = ({
   collectionId: number;
   page: number;
 }) => {
-  const { isLoading, question } = useQuestionDetails(page, questionId, collectionId);
+  const { isLoading, question, isError } = useQuestionDetails(page, questionId, collectionId);
+
+  if (isError) {
+    return <Navigate to={'/collections'} replace />;
+  }
 
   if (isLoading || !question) {
     return (

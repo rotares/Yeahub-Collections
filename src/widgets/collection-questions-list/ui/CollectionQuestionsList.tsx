@@ -4,21 +4,33 @@ import { Card } from '@/shared/ui/Card';
 import { EmptyState } from '@/shared/ui/EmptyState';
 import { NavLinkButton } from '@/shared/ui/NavLinkButton';
 import { useCollectionQuestions } from '../model';
+import { Navigate } from 'react-router-dom';
 
 export const CollectionQuestionsListWidget = ({ collectionId }: { collectionId: number }) => {
-  const { handleChangePage, isLoadingQuestions, questionsData, totalPages, currentPage } =
-    useCollectionQuestions(collectionId);
+  const {
+    handleChangePage,
+    isLoadingQuestions,
+    questionsData,
+    totalPages,
+    currentPage,
+    isError: isErrorCollection,
+  } = useCollectionQuestions(collectionId);
 
-  const { isFree, isLoadingCollection } = useGetCollectionByIdQuery(collectionId, {
-    selectFromResult: (res) => ({
-      isFree: res.data?.isFree,
-      isLoadingCollection: res.isLoading,
+  const { isFree, isLoadingCollection, isErrorById } = useGetCollectionByIdQuery(collectionId, {
+    selectFromResult: ({ data, isLoading, isError }) => ({
+      isFree: data?.isFree,
+      isLoadingCollection: isLoading,
+      isErrorById: isError,
     }),
   });
 
   const isLoading = isLoadingQuestions || isLoadingCollection;
 
   const render = () => {
+    if (isErrorById || isErrorCollection) {
+      return <Navigate to={'/collections'} replace />;
+    }
+
     if (isLoading) return <QuestionItemSkeleton count={7} />;
 
     if (isFree === false)

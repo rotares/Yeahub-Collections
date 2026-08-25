@@ -1,4 +1,5 @@
 import { PageLayout } from '@/shared/ui/PageLayout';
+import { ScrollRestoration } from 'react-router-dom';
 import {
   CollectionDetailsAsideWidget,
   CollectionDetailsHeaderWidget,
@@ -25,6 +26,7 @@ export const CollectionDetailsPage = () => {
           <CollectionDetailsAsideWidget collectionId={numericId} />
         </PageLayout.Aside>
       </PageLayout>
+      <ScrollRestoration />
     </>
   );
 };

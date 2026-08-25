@@ -1,7 +1,6 @@
 export {
   CollectionItemSkeleton,
   CollectionList,
-  collectionsQuerySchema,
   useGetCollectionByIdQuery,
   useGetPublicCollectionsQuery,
 } from './collection';

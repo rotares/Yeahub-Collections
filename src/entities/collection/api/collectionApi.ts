@@ -7,7 +7,6 @@ import type {
 
 export const collectionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // Получение списка публичных коллекций с фильтрацией и пагинацией
     getPublicCollections: builder.query<
       PaginatedResponse<CollectionDto>,
       GetPublicCollectionsParams
@@ -20,7 +19,6 @@ export const collectionApi = baseApi.injectEndpoints({
             page,
             limit,
             ...restParams,
-            // Передаем массив специализаций через запятую или несколько query-параметров
             ...(specializations?.length && {
               specializations: specializations.join(','),
             }),
@@ -29,7 +27,6 @@ export const collectionApi = baseApi.injectEndpoints({
       },
       providesTags: (_res, _err, args) => [{ type: 'Collection', id: args.page }],
     }),
-    // Получение одной коллекции по ID
     getCollectionById: builder.query<CollectionDto, number>({
       query: (id) => `collections/${id}/public`,
       providesTags: (_result, _error, id) => [{ type: 'Collection', id }],

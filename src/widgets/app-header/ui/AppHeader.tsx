@@ -4,6 +4,7 @@ import { SidebarDrawer } from '@/shared/ui/SidebarDrawer';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import styles from './AppHeader.module.css';
+import { useUiContext } from '@/shared/lib/hooks';
 
 const NAV_ITEMS = [
   { to: '/collections', label: 'База вопросов' },
@@ -11,22 +12,26 @@ const NAV_ITEMS = [
   { to: '/', label: 'Материалы' },
 ] as const;
 
-const NavigationList = () => (
-  <nav>
-    <ul className={styles.headerNav}>
-      {NAV_ITEMS.map(({ to, label }) => (
-        <li key={label}>
-          <NavLink
-            to={to}
-            className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-          >
-            {label}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-  </nav>
-);
+const NavigationList = () => {
+  const { closeDrawer } = useUiContext();
+  return (
+    <nav>
+      <ul className={styles.headerNav}>
+        {NAV_ITEMS.map(({ to, label }) => (
+          <li key={label}>
+            <NavLink
+              to={to}
+              className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
+              onClick={() => closeDrawer('burger')}
+            >
+              {label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 
 export const AppHeader = () => {
   return (

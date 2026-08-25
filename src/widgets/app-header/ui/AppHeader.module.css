@@ -29,11 +29,11 @@
   gap: 15px;
   align-items: center;
   text-decoration: none;
-  color: var(--black-800);
+  color: black;
 }
 
-.logoWrapper h1:hover {
-  color: var(--purple-700);
+.logoWrapper:hover {
+  color: var(--color-purple-700);
   transition-duration: var(--duration);
 }
 
@@ -69,15 +69,26 @@
 
 .link {
   text-decoration: none;
+  color: var(--color-gray);
 }
 
 .link.active {
   color: var(--color-purple-700);
 }
 
+.buttonMobile {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
 @media (max-width: 1280px) {
   .desktopNav,
   .buttonWrapper {
     display: none;
+  }
+
+  .headerNav {
+    flex-direction: column;
   }
 }

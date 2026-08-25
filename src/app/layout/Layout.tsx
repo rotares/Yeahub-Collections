@@ -1,5 +1,5 @@
-import { AppHeader } from '@/widgets';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { AppHeader, AppFooter } from '@/widgets';
+import { Outlet } from 'react-router-dom';
 import styles from './Layout.module.css';
 export const Layout = () => {
   return (
@@ -10,9 +10,7 @@ export const Layout = () => {
         <Outlet />
       </main>
 
-      <footer>footer</footer>
-
-      <ScrollRestoration />
+      <AppFooter />
     </>
   );
 };

@@ -35,7 +35,7 @@ export const AppHeader = () => {
         <div className={styles.headerWrapper}>
           <div className={styles.logoNavWrapper}>
             <NavLink className={styles.logoWrapper as string} to={'/'}>
-              <img src="/logo.svg" alt="" />
+              <img src="/src/shared/assets/logo.png" alt="" />
               <h1>Yeahub</h1>
             </NavLink>
             <div className={styles.desktopNav}>
@@ -51,6 +51,10 @@ export const AppHeader = () => {
       </div>
       <SidebarDrawer id="burger" type="burger">
         <NavigationList />
+        <div className={styles.buttonMobile}>
+          <Button type="link">Вход</Button>
+          <Button type="filled">Регистрация</Button>
+        </div>
       </SidebarDrawer>
     </header>
   );

@@ -1,0 +1,155 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: var(--footer-color, #130032);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.content {
+  padding: 24px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.description {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 800px;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px 0 20px 0;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.copyrightGroup {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+}
+
+.socialGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.socialText {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.socialIcons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.socialIcons a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.socialIcons img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .bottomSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .copyrightGroup {
+    order: -1;
+  }
+
+  .socialText {
+    order: 3;
+    grid-column: span 2;
+  }
+
+  .socialGroup {
+    display: contents;
+  }
+}
+
+@media (max-width: 400px) {
+  .bottomSection {
+    grid-template-columns: 1fr;
+  }
+
+  .socialText {
+    grid-column: auto;
+  }
+}

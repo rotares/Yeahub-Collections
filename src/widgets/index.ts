@@ -6,3 +6,4 @@ export { CollectionsFeedWidget } from './collections-feed';
 export { QuestionAsideWidget } from './question-aside/';
 export { QuestionContentWidget } from './question-content';
 export { QuestionHeaderWidget } from './question-header/';
+export { AppFooter } from './app-footer';

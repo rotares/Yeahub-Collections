@@ -7,14 +7,11 @@ export const useSearchFilter = ({ key }: FilterOptions<CommonParams>) => {
   const { params, setQueryParams } = useQueryParams();
 
   const urlValue = (params[key] || '') as string;
-
   const [value, setValue] = useState<string>(urlValue);
-  const [prevUrlValue, setPrevUrlValue] = useState<string>(urlValue);
 
-  if (prevUrlValue !== urlValue) {
-    setPrevUrlValue(urlValue);
+  useEffect(() => {
     setValue(urlValue);
-  }
+  }, [urlValue]);
 
   const debouncedValue = useDebounce(value);
 
@@ -25,7 +22,7 @@ export const useSearchFilter = ({ key }: FilterOptions<CommonParams>) => {
       [key]: debouncedValue.trim() || undefined,
       page: 1,
     });
-  }, [debouncedValue, urlValue, setQueryParams, key]);
+  }, [debouncedValue, setQueryParams, key]);
 
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

@@ -1,3 +1,3 @@
 export { useGetCollectionByIdQuery, useGetPublicCollectionsQuery } from './api/collectionApi';
 export { collectionsQuerySchema } from './model';
-export { CollectionList } from './ui';
+export { CollectionItemSkeleton, CollectionList } from './ui';

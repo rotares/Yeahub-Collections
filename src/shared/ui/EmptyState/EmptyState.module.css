@@ -1,0 +1,10 @@
+.empty {
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.title {
+  font-size: 18px;
+}

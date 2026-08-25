@@ -1,13 +1,13 @@
 import { AccessFilter, CollectionSearchInput, SpecializationFilter } from '@/features';
 import { FilterBar } from '@/shared/ui/FilterBar';
 import { PageLayout } from '@/shared/ui/PageLayout';
-import { CollectionListSection } from '@/widgets';
+import { CollectionsFeedWidget } from '@/widgets';
 
 export const CollectionsPage = () => {
   return (
     <PageLayout>
       <PageLayout.Content>
-        <CollectionListSection />
+        <CollectionsFeedWidget />
       </PageLayout.Content>
 
       <PageLayout.Aside>

@@ -1,3 +1,3 @@
 export { CollectionDetailsPage } from './CollectionDetailsPage';
 export { CollectionsPage } from './CollectionsPage';
-export { QuestionDetails } from './QuestionDetails/ui/QuestionDetails';
+export { QuestionDetailsPage } from './QuestionDetailsPage/ui/QuestionDetailsPage';

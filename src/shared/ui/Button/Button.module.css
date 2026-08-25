@@ -23,9 +23,20 @@
 .filled {
   background-color: var(--color-purple-700);
   color: var(--background-white);
+  border: 1px solid var(--color-purple-700);
 }
 
 .filled:hover {
   background-color: var(--color-purple-100);
   color: var(--color-purple-700);
+}
+
+.link {
+  display: inline-flex;
+  color: var(--color-purple-700);
+  padding: 0;
+}
+
+.link:hover {
+  opacity: 0.7;
 }

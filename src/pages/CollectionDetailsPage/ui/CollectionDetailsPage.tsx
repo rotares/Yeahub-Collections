@@ -1,29 +1,28 @@
-import { FilterBar } from '@/shared/ui/FilterBar';
 import { PageLayout } from '@/shared/ui/PageLayout';
-import { CollectionQuestionsListSection } from '@/widgets';
+import {
+  CollectionDetailsAsideWidget,
+  CollectionDetailsHeaderWidget,
+  CollectionQuestionsListWidget,
+} from '@/widgets';
 import { Navigate, useParams } from 'react-router-dom';
-import { CollectionAsideContainer } from './CollectionAsideContainer';
-import { CollectionHeader } from './CollectionHeader';
 
 export const CollectionDetailsPage = () => {
   const { collectionId } = useParams();
+  const numericId = Number(collectionId);
 
-  if (!collectionId) {
-    return <Navigate to="/collections" replace={true} />;
+  if (!collectionId || Number.isNaN(numericId)) {
+    return <Navigate to="/collections" replace />;
   }
 
   return (
     <>
       <PageLayout>
         <PageLayout.Content>
-          <CollectionHeader collectionId={collectionId} />
-          <CollectionQuestionsListSection collectionId={collectionId} />
+          <CollectionDetailsHeaderWidget collectionId={numericId} />
+          <CollectionQuestionsListWidget collectionId={numericId} />
         </PageLayout.Content>
-
         <PageLayout.Aside>
-          <FilterBar>
-            <CollectionAsideContainer collectionId={collectionId} />
-          </FilterBar>
+          <CollectionDetailsAsideWidget collectionId={numericId} />
         </PageLayout.Aside>
       </PageLayout>
     </>

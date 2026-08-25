@@ -1,1 +1,0 @@
-export { CollectionListSection } from './CollectionListSection';

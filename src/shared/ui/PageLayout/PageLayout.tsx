@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { ReactNode } from 'react';
 import styles from './PageLayout.module.css';
 
@@ -19,7 +20,7 @@ const PageLayoutRoot = ({ children }: PageLayoutProps) => {
 };
 
 const Content = ({ children, className = '' }: PageLayoutContentProps) => {
-  return <div className={styles.content}>{children}</div>;
+  return <div className={clsx(styles.content, className)}>{children}</div>;
 };
 
 const Aside = ({ children }: PageLayoutAsideProps) => {

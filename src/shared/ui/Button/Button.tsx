@@ -3,18 +3,14 @@ import type { ReactNode } from 'react';
 import styles from './Button.module.css';
 
 type ButtonProps = {
-  type?: 'filled' | 'transparent';
+  type?: 'filled' | 'transparent' | 'link';
   onClick?: () => void;
   children: ReactNode;
 };
 
 export const Button = ({ type = 'filled', onClick, children }: ButtonProps) => {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={clsx(styles.button, type === 'filled' ? styles.filled : styles.transparent)}
-    >
+    <button type="button" onClick={onClick} className={clsx(styles.button, styles[type])}>
       {children}
     </button>
   );

@@ -1,1 +1,1 @@
-export { SidebarDrawer } from './ui/SidebarDrawer';
+export { SidebarDrawer } from './SidebarDrawer';

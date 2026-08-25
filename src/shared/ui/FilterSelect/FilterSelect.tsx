@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Chip } from '../Chip';
 import styles from './FilterSelect.module.css';
+import { FilterSelectSkeleton } from './FilterSelectSkeleton/FilterSelectSkeleton';
 export interface FilterOption<T> {
   title: string;
   value: T;
@@ -29,8 +30,9 @@ export const FilterSelect = <T,>({
   const visibleOptions = shouldTruncate && !isExpanded ? options.slice(0, maxVisible) : options;
 
   if (isLoading) {
-    return <div>Загрузка...</div>;
+    return <FilterSelectSkeleton chipsCount={5} />;
   }
+
   return (
     <div className={styles.main}>
       <h4 className={styles.title}>{title}</h4>

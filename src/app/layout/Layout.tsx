@@ -1,9 +1,10 @@
+import { AppHeader } from '@/widgets';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import styles from './Layout.module.css';
 export const Layout = () => {
   return (
     <>
-      <header>header</header>
+      <AppHeader />
 
       <main className={styles.container}>
         <Outlet />

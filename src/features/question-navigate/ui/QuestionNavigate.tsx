@@ -2,15 +2,15 @@ import { useQuestionNavigation } from '../model';
 import styles from './QuestionNavigate.module.css';
 
 type Props = {
-  collectionId: string;
-  questionId: string;
+  collectionId: number;
+  questionId: number;
   currentPage: number;
 };
 
 export const QuestionNavigate = ({ collectionId, questionId, currentPage }: Props) => {
   const { handleNext, handlePrev, hasNext, hasPrev } = useQuestionNavigation({
-    collectionId: Number(collectionId),
-    currentQuestionId: Number(questionId),
+    collectionId,
+    currentQuestionId: questionId,
     currentPage,
   });
 

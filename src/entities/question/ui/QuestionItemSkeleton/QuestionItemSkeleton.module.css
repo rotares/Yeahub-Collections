@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+}

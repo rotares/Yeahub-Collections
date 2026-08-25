@@ -5,7 +5,7 @@ import { isArrayShallowEqual } from '@/shared/lib/utils';
 import { Badge } from '@/shared/ui/Badge';
 import { Card } from '@/shared/ui/Card';
 import { memo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CollectionPreview } from '../CollectionPreview';
 import styles from './CollectionItem.module.css';
 
@@ -16,16 +16,8 @@ type CollectionItemProps = Pick<
 
 export const CollectionItem = memo(
   ({ id, title, keywords, isFree, questionsCount, specializations }: CollectionItemProps) => {
-    const location = useLocation();
-
     return (
-      <Link
-        className={styles.linkWrapper}
-        to={`/collections/${id}`}
-        state={{
-          from: location.pathname,
-        }}
-      >
+      <Link className={styles.linkWrapper} to={`/collections/${id}`}>
         <Card key={id} className={styles.card}>
           <div className={styles.imgWrapper}>
             <img src={CollectionImg} alt={title} className={styles.img} />

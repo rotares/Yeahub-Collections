@@ -1,0 +1,69 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.image {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.chip {
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.title {
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  margin-bottom: 6px;
+}
+
+.counterRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.icon {
+  border-radius: 6px;
+}
+
+.noMargin {
+  margin-bottom: 0;
+}
+
+.role {
+  margin-bottom: 0;
+}
+
+@media (max-width: 499px) {
+  .card {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .image {
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    border-radius: 16px;
+  }
+
+  .chip {
+    margin-top: 4px;
+  }
+}

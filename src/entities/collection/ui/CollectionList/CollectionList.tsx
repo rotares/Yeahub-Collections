@@ -1,4 +1,4 @@
-import { type CollectionDto } from '@/shared/api/types/';
+import { type CollectionDto } from '@/shared/api';
 import { CollectionItem } from '../CollectionItem';
 import styles from './CollectionList.module.css';
 interface CollectionListProps {

@@ -8,15 +8,15 @@ export const useQueryParams = () => {
   const limit = Number(searchParams.get('limit')) || 10;
   const titleOrDescriptionSearch = searchParams.get('titleOrDescriptionSearch') || undefined;
   const isFree = searchParams.has('isFree') ? searchParams.get('isFree') === 'true' : undefined;
+  const rawSpec = searchParams.get('specializations');
 
   const specializations = useMemo(() => {
-    const raw = searchParams.get('specializations');
-    if (!raw) return [];
-    return raw
+    if (!rawSpec) return [];
+    return rawSpec
       .split(',')
       .map(Number)
       .filter((val) => !isNaN(val));
-  }, [searchParams]);
+  }, [rawSpec]);
 
   const resetQueryParams = useCallback(() => {
     setSearchParams({});

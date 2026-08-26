@@ -1,5 +1,5 @@
-import { useQueryParams } from '@/shared/lib/hooks';
-import { Button } from '../../../shared/ui/Button';
+import { useQueryParams } from '@/shared/lib';
+import { Button } from '@/shared/ui/';
 
 export const FiltersResetButton = () => {
   const { resetQueryParams } = useQueryParams();

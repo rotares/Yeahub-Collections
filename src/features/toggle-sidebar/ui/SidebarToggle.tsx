@@ -1,5 +1,5 @@
-import { useMediaQuery, useUiContext } from '@/shared/lib/hooks';
-import type { DrawerId } from '@/shared/lib/providers';
+import { useMediaQuery, useUiContext } from '@/shared/lib';
+import type { DrawerId } from '@/shared/providers';
 import clsx from 'clsx';
 import { useEffect } from 'react';
 import styles from './SidebarToggle.module.css';

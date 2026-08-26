@@ -1,9 +1,5 @@
+import type { CollectionDto, GetPublicCollectionsParams, PaginatedResponse } from '@/shared/api';
 import { baseApi } from '@/shared/api/baseApi';
-import type {
-  CollectionDto,
-  GetPublicCollectionsParams,
-  PaginatedResponse,
-} from '@/shared/api/types';
 
 export const collectionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

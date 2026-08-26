@@ -1,9 +1,8 @@
-import { type CollectionDto } from '@/shared/api/types/';
+import { type CollectionDto } from '@/shared/api';
 import CollectionImg from '@/shared/assets/Collection.jpg';
 import Icon from '@/shared/assets/questionIcon.svg';
-import { isArrayShallowEqual } from '@/shared/lib/utils';
-import { Badge } from '@/shared/ui/Badge';
-import { Card } from '@/shared/ui/Card';
+import { isArrayShallowEqual } from '@/shared/lib';
+import { Badge, Card } from '@/shared/ui';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { CollectionPreview } from '../CollectionPreview';

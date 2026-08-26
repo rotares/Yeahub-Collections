@@ -1,8 +1,5 @@
-import type { QuestionDto } from '@/shared/api/types';
-import { Card } from '@/shared/ui/Card';
-import { DropdownArrow } from '@/shared/ui/DropdownArrow';
-import { FormattedAnswer } from '@/shared/ui/FormattedAnswer';
-import { MetricCard } from '@/shared/ui/MetricCard';
+import type { QuestionDto } from '@/shared/api';
+import { Card, DropdownArrow, FormattedAnswer, MetricCard } from '@/shared/ui';
 import clsx from 'clsx';
 import { memo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';

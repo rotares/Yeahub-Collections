@@ -1,9 +1,8 @@
-import { useQueryParams } from '@/shared/lib/hooks';
+import { useQueryParams } from '@/shared/lib';
 import { PageBackButton } from '@/shared/ui/PageBackButton';
 import { PageLayout } from '@/shared/ui/PageLayout';
 import { QuestionAsideWidget, QuestionContentWidget, QuestionHeaderWidget } from '@/widgets';
-import { Navigate, useParams } from 'react-router-dom';
-import { ScrollRestoration } from 'react-router-dom';
+import { Navigate, ScrollRestoration, useParams } from 'react-router-dom';
 
 export const QuestionDetailsPage = () => {
   const { questionId, collectionId } = useParams();

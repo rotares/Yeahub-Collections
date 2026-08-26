@@ -1,6 +1,5 @@
-import { useMediaQuery } from '@/shared/lib/hooks';
-import { Aside } from '@/shared/ui/Aside';
-import { SidebarDrawer } from '@/shared/ui/SidebarDrawer';
+import { useMediaQuery } from '@/shared/lib';
+import { Aside, SidebarDrawer } from '@/shared/ui';
 import type { ReactNode } from 'react';
 
 export const FilterBar = ({ children }: { children: ReactNode }) => {

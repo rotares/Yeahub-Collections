@@ -1,4 +1,4 @@
-import { useQueryParams, type CommonParams } from '@/shared/lib/hooks';
+import { useQueryParams, type CommonParams } from '@/shared/lib';
 import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { type FilterOptions } from './types';
 

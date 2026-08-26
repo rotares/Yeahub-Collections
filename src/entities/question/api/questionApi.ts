@@ -1,5 +1,5 @@
+import type { GetPublicQuestionsParams, PaginatedResponse, QuestionDto } from '@/shared/api';
 import { baseApi } from '@/shared/api/baseApi';
-import type { GetPublicQuestionsParams, PaginatedResponse, QuestionDto } from '@/shared/api/types';
 
 export const questionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

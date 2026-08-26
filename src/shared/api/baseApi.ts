@@ -10,4 +10,3 @@ export const baseApi = createApi({
   tagTypes: ['Collection', 'Question', 'Specialization'],
   endpoints: () => ({}),
 });
-export default baseApi.reducer;

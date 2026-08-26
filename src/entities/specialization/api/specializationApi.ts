@@ -1,9 +1,9 @@
-import { baseApi } from '@/shared/api/baseApi';
 import {
-  type SpecializationDto,
   type PaginatedResponse,
   type PaginationParams,
-} from '@/shared/api/types';
+  type SpecializationDto,
+} from '@/shared/api';
+import { baseApi } from '@/shared/api/baseApi';
 
 export const specializationApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

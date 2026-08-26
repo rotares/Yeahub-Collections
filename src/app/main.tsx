@@ -1,4 +1,4 @@
-import { UiProvider } from '@/shared/lib/providers';
+import { UiProvider } from '@/shared/providers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Router, StoreProvider } from './providers';

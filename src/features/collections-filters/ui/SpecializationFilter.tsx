@@ -1,6 +1,6 @@
-import { useGetSpecializationsQuery } from '@/entities/specialization';
-import { specializationTitleMapper } from '@/shared/lib/utils';
-import { FilterSelect } from '@/shared/ui/FilterSelect';
+import { useGetSpecializationsQuery } from '@/entities';
+import { specializationTitleMapper } from '@/shared/lib';
+import { FilterSelect } from '@/shared/ui';
 import { memo, useMemo } from 'react';
 import { useFilterSelect } from '../model';
 

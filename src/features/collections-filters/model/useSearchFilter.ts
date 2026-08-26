@@ -1,6 +1,5 @@
-import { useQueryParams, type CommonParams } from '@/shared/lib/hooks';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { useCallback, useEffect, useState, type ChangeEvent } from 'react';
+import { useQueryParams, type CommonParams } from '@/shared/lib';
+import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { type FilterOptions } from './types';
 
 export const useSearchFilter = ({ key }: FilterOptions<CommonParams>) => {
@@ -9,32 +8,63 @@ export const useSearchFilter = ({ key }: FilterOptions<CommonParams>) => {
   const urlValue = (params[key] || '') as string;
   const [value, setValue] = useState<string>(urlValue);
 
-  useEffect(() => {
-    setValue(urlValue);
-  }, [urlValue]);
+  const prevUrlValueRef = useRef(urlValue);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const setQueryParamsRef = useRef(setQueryParams);
 
-  const debouncedValue = useDebounce(value);
+  const updateUrlDebounced = useCallback(
+    (newValue: string) => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
 
-  useEffect(() => {
-    if (debouncedValue === urlValue) return;
+      timerRef.current = setTimeout(() => {
+        setQueryParamsRef.current({
+          [key]: newValue.trim() || undefined,
+          page: 1,
+        });
+      }, 400);
+    },
+    [key],
+  );
 
-    setQueryParams({
-      [key]: debouncedValue.trim() || undefined,
-      page: 1,
-    });
-  }, [debouncedValue, setQueryParams, key]);
+  const onChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const val = e.target.value;
+      setValue(val);
+      updateUrlDebounced(val);
+    },
+    [updateUrlDebounced],
+  );
 
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
   }, []);
 
-  const onClear = useCallback(() => {
-    setValue('');
-  }, []);
+  useEffect(() => {
+    setQueryParamsRef.current = setQueryParams;
+  }, [setQueryParams]);
+
+  useEffect(() => {
+    return () => {
+      clearTimer();
+    };
+  }, [clearTimer]);
+
+  useEffect(() => {
+    const isUrlCleared = Boolean(prevUrlValueRef.current) && !urlValue;
+    if (isUrlCleared) {
+      clearTimer();
+      setValue('');
+    }
+    prevUrlValueRef.current = urlValue;
+  }, [urlValue, clearTimer]);
 
   return {
     value,
     onChange,
-    onClear,
   };
 };

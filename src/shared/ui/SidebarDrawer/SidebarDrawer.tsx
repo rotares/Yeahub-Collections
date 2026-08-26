@@ -1,5 +1,5 @@
-import { useUiContext } from '@/shared/lib/hooks';
-import { type DrawerId } from '@/shared/lib/providers';
+import { useUiContext } from '@/shared/lib';
+import { type DrawerId } from '@/shared/providers/UiContext';
 import { clsx } from 'clsx';
 import { useEffect, useRef, type ReactNode } from 'react';
 import styles from './SidebarDrawer.module.css';

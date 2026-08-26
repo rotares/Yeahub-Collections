@@ -1,6 +1,6 @@
 import { useAppStore } from '@/app/store';
 import { selectCachedQuestions } from '@/entities';
-import type { QuestionDto } from '@/shared/api/types';
+import type { QuestionDto } from '@/shared/api';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 

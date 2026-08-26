@@ -1,8 +1,8 @@
 import { ErrorPage } from '@/pages';
 import { ROUTE_CONFIG } from '@/shared/config';
+import { lazyWithLoader } from '@/shared/lib';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Layout } from '../layout';
-import { lazyWithLoader } from '@/shared/lib/utils';
 
 const CollectionDetailsPage = lazyWithLoader(() => import('@/pages/CollectionDetailsPage'));
 const CollectionsPage = lazyWithLoader(() => import('@/pages/CollectionsPage'));

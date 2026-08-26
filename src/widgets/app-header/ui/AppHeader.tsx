@@ -1,10 +1,9 @@
 import { SidebarToggle } from '@/features';
-import { Button } from '@/shared/ui/Button';
-import { SidebarDrawer } from '@/shared/ui/SidebarDrawer';
+import { useUiContext } from '@/shared/lib';
+import { Button, SidebarDrawer } from '@/shared/ui';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import styles from './AppHeader.module.css';
-import { useUiContext } from '@/shared/lib/hooks';
 
 const NAV_ITEMS = [
   { to: '/collections', label: 'База вопросов' },

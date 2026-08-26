@@ -1,4 +1,4 @@
-import type { QuestionDto } from '@/shared/api/types';
+import type { QuestionDto } from '@/shared/api';
 import { QuestionAccordionItem } from './QuestionAccordionItem';
 
 export const QuestionAccordionList = ({

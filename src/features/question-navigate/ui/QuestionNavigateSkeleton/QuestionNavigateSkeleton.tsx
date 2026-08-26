@@ -1,5 +1,4 @@
-import { Card } from '@/shared/ui/Card';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Card, Skeleton } from '@/shared/ui';
 import styles from './QuestionNavigateSkeleton.module.css';
 
 export const QuestionNavigateSkeleton = () => {

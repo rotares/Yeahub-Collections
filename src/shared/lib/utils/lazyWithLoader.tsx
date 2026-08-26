@@ -1,5 +1,5 @@
-import { type ComponentType, Suspense, lazy, type FC } from 'react';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/ui';
+import { Suspense, lazy, type ComponentType, type FC } from 'react';
 
 export const lazyWithLoader = (importFn: () => Promise<{ default: ComponentType }>): FC => {
   const LazyComponent = lazy(importFn);

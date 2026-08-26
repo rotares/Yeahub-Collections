@@ -1,6 +1,5 @@
 import { useQueryParams } from '@/shared/lib';
-import { PageBackButton } from '@/shared/ui/PageBackButton';
-import { PageLayout } from '@/shared/ui/PageLayout';
+import { PageBackButton, PageLayout } from '@/shared/ui';
 import { QuestionAsideWidget, QuestionContentWidget, QuestionHeaderWidget } from '@/widgets';
 import { Navigate, ScrollRestoration, useParams } from 'react-router-dom';
 

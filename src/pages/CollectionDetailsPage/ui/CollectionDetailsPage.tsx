@@ -1,11 +1,10 @@
-import { PageLayout } from '@/shared/ui/PageLayout';
-import { ScrollRestoration } from 'react-router-dom';
+import { PageLayout } from '@/shared/ui';
 import {
   CollectionDetailsAsideWidget,
   CollectionDetailsHeaderWidget,
   CollectionQuestionsListWidget,
 } from '@/widgets';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, ScrollRestoration, useParams } from 'react-router-dom';
 
 export const CollectionDetailsPage = () => {
   const { collectionId } = useParams();

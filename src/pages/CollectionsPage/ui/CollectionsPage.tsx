@@ -1,6 +1,5 @@
 import { AccessFilter, CollectionSearchInput, SpecializationFilter } from '@/features';
-import { FilterBar } from '@/shared/ui/FilterBar';
-import { PageLayout } from '@/shared/ui/PageLayout';
+import { FilterBar, PageLayout } from '@/shared/ui';
 import { CollectionsFeedWidget } from '@/widgets';
 
 export const CollectionsPage = () => {

@@ -1,5 +1,4 @@
-import { DropdownArrow } from '@/shared/ui/DropdownArrow';
-import { FormattedAnswer } from '@/shared/ui/FormattedAnswer';
+import { DropdownArrow, FormattedAnswer } from '@/shared/ui';
 import clsx from 'clsx';
 import { useLayoutEffect, useRef, useState } from 'react';
 import styles from './QuestionLongAnswer.module.css';

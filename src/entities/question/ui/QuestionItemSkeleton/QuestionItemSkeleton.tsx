@@ -1,5 +1,4 @@
-import { Card } from '@/shared/ui/Card';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Card, Skeleton } from '@/shared/ui';
 import styles from './QuestionItemSkeleton.module.css';
 
 export const QuestionItemSkeleton = ({ count = 1 }: { count?: number }) => {

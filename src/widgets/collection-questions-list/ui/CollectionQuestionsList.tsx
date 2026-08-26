@@ -1,10 +1,8 @@
 import { QuestionAccordionList, QuestionItemSkeleton, useGetCollectionByIdQuery } from '@/entities';
 import { Pagination } from '@/features';
-import { Card } from '@/shared/ui/Card';
-import { EmptyState } from '@/shared/ui/EmptyState';
-import { NavLinkButton } from '@/shared/ui/NavLinkButton';
-import { useCollectionQuestions } from '../model';
+import { Card, EmptyState, NavLinkButton } from '@/shared/ui';
 import { Navigate } from 'react-router-dom';
+import { useCollectionQuestions } from '../model';
 
 export const CollectionQuestionsListWidget = ({ collectionId }: { collectionId: number }) => {
   const {

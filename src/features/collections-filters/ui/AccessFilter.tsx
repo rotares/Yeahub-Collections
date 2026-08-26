@@ -9,7 +9,7 @@ const ACCESS_FILTERS = [
   },
 ];
 
-import { FilterSelect } from '@/shared/ui/FilterSelect';
+import { FilterSelect } from '@/shared/ui';
 import { memo } from 'react';
 import { useFilterSelect } from '../model';
 

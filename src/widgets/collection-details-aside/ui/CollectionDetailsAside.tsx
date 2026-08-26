@@ -1,8 +1,5 @@
 import { useGetCollectionByIdQuery } from '@/entities';
-import { Badge } from '@/shared/ui/Badge';
-import { Chip } from '@/shared/ui/Chip';
-import { FilterBar } from '@/shared/ui/FilterBar';
-import { InfoBlock } from '@/shared/ui/InfoBlock';
+import { Badge, Chip, FilterBar, InfoBlock } from '@/shared/ui';
 import { memo } from 'react';
 import { CollectionDetailsAsideSkeleton } from './CollectionDetailsAsideSkeleton';
 

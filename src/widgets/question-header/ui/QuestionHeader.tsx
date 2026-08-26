@@ -1,7 +1,7 @@
 import { useQuestionDetails } from '@/entities';
 import { SidebarToggle } from '@/features';
 import QuestionImg from '@/shared/assets/questionImg.jpg';
-import { HeaderSection } from '@/shared/ui/HeaderSection';
+import { HeaderSection } from '@/shared/ui';
 
 export const QuestionHeaderWidget = ({
   page,

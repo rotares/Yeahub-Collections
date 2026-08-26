@@ -1,4 +1,4 @@
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Skeleton } from '@/shared/ui';
 import styles from './FilterSelectSkeleton.module.css';
 
 type FilterSelectSkeletonProps = {

@@ -1,8 +1,7 @@
 import { CollectionItemSkeleton, CollectionList } from '@/entities';
 import { FiltersResetButton, SidebarToggle } from '@/features';
 import { Pagination } from '@/features/pagination';
-import { Card } from '@/shared/ui/Card';
-import { EmptyState } from '@/shared/ui/EmptyState';
+import { Card, EmptyState } from '@/shared/ui';
 import { useCollectionData } from '../model';
 
 export const CollectionsFeedWidget = () => {

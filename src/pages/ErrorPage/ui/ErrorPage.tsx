@@ -1,7 +1,5 @@
-import { PageLayout } from '@/shared/ui/PageLayout';
-import { Card } from '@/shared/ui/Card';
+import { Card, NavLinkButton, PageLayout } from '@/shared/ui';
 import styles from './ErrorPage.module.css';
-import { NavLinkButton } from '@/shared/ui/NavLinkButton';
 export const ErrorPage = () => {
   return (
     <PageLayout>

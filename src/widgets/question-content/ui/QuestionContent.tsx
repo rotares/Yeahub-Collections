@@ -1,7 +1,6 @@
 import { QuestionAnswerSkeleton, QuestionLongAnswer, useQuestionDetails } from '@/entities';
 import { QuestionNavigate, QuestionNavigateSkeleton } from '@/features';
-import { Card } from '@/shared/ui/Card';
-import { FormattedAnswer } from '@/shared/ui/FormattedAnswer';
+import { Card, FormattedAnswer } from '@/shared/ui';
 import { Navigate } from 'react-router-dom';
 export const QuestionContentWidget = ({
   questionId,

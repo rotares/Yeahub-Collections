@@ -1,5 +1,5 @@
 import IconSearch from '@/shared/assets/searchIcon.svg';
-import { Input } from '@/shared/ui/Input';
+import { Input } from '@/shared/ui';
 import { memo } from 'react';
 import { useSearchFilter } from '../model/useSearchFilter';
 
